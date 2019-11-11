@@ -2,7 +2,7 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url>
 <loc>
-http://roby.wan/blog/authors-output/roby-wan/index.html
+https://robywan27.github.iomy-blog/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -10,7 +10,7 @@ http://roby.wan/blog/authors-output/roby-wan/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/index.html
+https://robywan27.github.iomy-blog/posts/2019-11-11-programming-paradigms-explained/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -18,7 +18,7 @@ http://roby.wan/blog/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/posts/2019-11-11-programming-paradigms-explained/index.html
+https://robywan27.github.iomy-blog/posts/2014-03-10-first-post/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -26,7 +26,7 @@ http://roby.wan/blog/posts/2019-11-11-programming-paradigms-explained/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/posts/2014-03-10-first-post/index.html
+https://robywan27.github.iomy-blog/posts/2019-11-11-function-closures/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -34,7 +34,7 @@ http://roby.wan/blog/posts/2014-03-10-first-post/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/posts/2019-11-11-function-closures/index.html
+https://robywan27.github.iomy-blog/posts/2019-11-11-static-vs-dynamic-type-checking/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -42,7 +42,7 @@ http://roby.wan/blog/posts/2019-11-11-function-closures/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/posts/2019-11-11-static-vs-dynamic-type-checking/index.html
+https://robywan27.github.iomy-blog/posts/2019-11-11-expressions-vs-statements/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -50,7 +50,7 @@ http://roby.wan/blog/posts/2019-11-11-static-vs-dynamic-type-checking/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/posts/2019-11-11-expressions-vs-statements/index.html
+https://robywan27.github.iomy-blog/posts/2016-01-07-docs/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -58,7 +58,7 @@ http://roby.wan/blog/posts/2019-11-11-expressions-vs-statements/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/posts/2016-01-07-docs/index.html
+https://robywan27.github.iomy-blog/posts/2014-11-04-second-post/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -66,7 +66,7 @@ http://roby.wan/blog/posts/2016-01-07-docs/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/posts/2014-11-04-second-post/index.html
+https://robywan27.github.iomy-blog/posts/2019-11-11-foldr-vs-foldl/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -74,7 +74,7 @@ http://roby.wan/blog/posts/2014-11-04-second-post/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/posts/2019-11-11-foldr-vs-foldl/index.html
+https://robywan27.github.iomy-blog/pages/another-page/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -82,7 +82,7 @@ http://roby.wan/blog/posts/2019-11-11-foldr-vs-foldl/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/pages/another-page/index.html
+https://robywan27.github.iomy-blog/pages/about/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -90,7 +90,7 @@ http://roby.wan/blog/pages/another-page/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/pages/about/index.html
+https://robywan27.github.iomy-blog/tags/types/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -98,7 +98,7 @@ http://roby.wan/blog/pages/about/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/tags/types/index.html
+https://robywan27.github.iomy-blog/tags/functional-programming folding/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -106,7 +106,7 @@ http://roby.wan/blog/tags/types/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/tags/functional-programming folding/index.html
+https://robywan27.github.iomy-blog/tags/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -114,7 +114,7 @@ http://roby.wan/blog/tags/functional-programming folding/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/tags/index.html
+https://robywan27.github.iomy-blog/tags/very fetch/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -122,7 +122,7 @@ http://roby.wan/blog/tags/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/tags/very fetch/index.html
+https://robywan27.github.iomy-blog/tags/expressions statements/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -130,7 +130,7 @@ http://roby.wan/blog/tags/very fetch/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/tags/expressions statements/index.html
+https://robywan27.github.iomy-blog/tags/closures functional-programming/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -138,7 +138,7 @@ http://roby.wan/blog/tags/expressions statements/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/tags/closures functional-programming/index.html
+https://robywan27.github.iomy-blog/tags/not fetch/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -146,7 +146,7 @@ http://roby.wan/blog/tags/closures functional-programming/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/tags/not fetch/index.html
+https://robywan27.github.iomy-blog/tags/cryogen/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -154,7 +154,7 @@ http://roby.wan/blog/tags/not fetch/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/tags/cryogen/index.html
+https://robywan27.github.iomy-blog/tags/programming-paradigms/index.html
 </loc>
 <lastmod>
 2019-11-11
@@ -162,7 +162,7 @@ http://roby.wan/blog/tags/cryogen/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/tags/programming-paradigms/index.html
+https://robywan27.github.iomy-blog/404.html
 </loc>
 <lastmod>
 2019-11-11
@@ -170,15 +170,7 @@ http://roby.wan/blog/tags/programming-paradigms/index.html
 </url>
 <url>
 <loc>
-http://roby.wan/blog/404.html
-</loc>
-<lastmod>
-2019-11-11
-</lastmod>
-</url>
-<url>
-<loc>
-http://roby.wan/blog/archives/index.html
+https://robywan27.github.iomy-blog/archives/index.html
 </loc>
 <lastmod>
 2019-11-11
