@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Elucubrations: Static vs dynamic type checking</title>
+    <link rel="canonical" href="http://roby.wan/blog/posts-output/2019-11-11-static-vs-dynamic-type-checking/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/blog/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/blog/">Elucubrations</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/blog/">Home</a></li>
+                <li
+                ><a href="/blog/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/blog/pages-output/about/">About me</a>
+                </li>
+                
+                <li><a href="/blog/feed.xml">RSS</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">11 November 2019</div>
+        
+    </div>
+    <h2>Static vs dynamic type checking</h2>
+</div>
+<div>
+    
+    <p>The type system is one of the fundamental elements which make up a programming language. There are two main categories under which most languages fall into: static and dynamic type checking. This taxonomy is orthogonal to that of programming paradigms such as object-oriented and functional. </p><h1 id="static&#95;type&#95;checking">Static type checking</h1><p>A strong type checking system mandates that every value in the program belong to one supported type in the program. If the compiler cannot infer the type of any given value, it will throw an error. For this reason, it is possible for statically-typed languages to detect type errors at compile time, which provides benefits later when the program is run. The fact that the program passes the compilation phase does not imply that the program is correct though, as there may be other kinds of errors in it. An interesting topic related to static type checking is type inference, which is employed by SML and its derived languages (link to article about type inference and Hindley-Milner).</p><h1 id="dynamic&#95;type&#95;checking">Dynamic type checking</h1><p>Dynamically-typed languages skip the type checking phase and the program is executed straight away. It is usually the case that languages employing this type checking are not compiled but rather interpreted, such as Ruby, Javascript, Python, Scheme (the reality can be more complex than written here, but a detailed treaty is out of scope).  This means that the class of errors which may have likely been detected with static type checking will go undetected until the running program incurs in them and crashes or even worse it executes wrongly. Although dynamically-typed languages give up program safety, they gain in flexibility; in fact, they allow the programmer to define heterogeneous data structures and abstractions which would otherwise be clumsy if not possible in a statically-typed language. For example, it is possible in Scheme to define lists of any element regardless of the type. A valid list can be <code>&#40;1 &quot;2&quot; #t&#41;</code>. This is not possible in Haskell for example, where each element of a list must conform to the specified type of the list:</p><pre><code>multiplyByTwo :: &#91;Int&#93; -&gt; &#91;Int&#93;
+multiplyByTwo xs = map &#40;&#42;2&#41; xs
+</code></pre><p>which when executed at the command line gives</p><pre><code>&gt; multiplyByTwo &#91;1, 2, 3, 4&#93;
+&#91;2, 4, 6, 8&#93;
+</code></pre><p>One misconception to be beware of is that dynamic type does not mean that values do not have types, they are indeed typed, just their type is inferred while the program is running rather than by the compiler.</p><h1 id="strong&#95;vs&#95;weak&#95;type">Strong vs weak type</h1><p>An honourable mention is worth giving to the strong vs weak type classification, since it is often wrongly used interchangeably instead of static and dynamic type checking. Actually, there is not a definitive definition of strong and weak type. Most languages, even dynamically-typed ones, are strongly typed. Weakly-typed languages are those languages which perform some kind of implicit type conversion. C and C++ are the most well-known languages which can be defined weakly-typed.</p><h1 id="overview&#95;of&#95;some&#95;popular&#95;languages">Overview of some popular languages</h1><p>As a closing point I will provide an overview of some popular languages in relation to their type system and programming paradigm. The following table provides a rough classification of some popular languages:</p><table><thead><tr></tr></thead></table>|&mdash;&mdash;&mdash;&mdash;&mdash;-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;||object-oriented|Ruby            |Java, C++            ||functional          |Scheme/Racket, Clojure, Erlang/Elixir            |SML, Haskell            |Note that it is usually not entirely correct that a language follows exclusively one single paradigm as most popular languages are multi-paradigm. Nonetheless there is usually one paradigm which is primary to a given language. Some other languages position in the middle and allow both styles interchangeably, such as Scala and Kotlin. Some languages have not been included as their classification would be ambiguous. Python is weakly-typed and supports both paradigms, even though it is more apt to either a procedural or object-oriented style. Javascript is weakly-typed and draws a lot from the functional approach, even though it does support some kind of object-oriented form. 
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/blog/tags-output/types/">types</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/blog/posts-output/2019-11-11-function-closures/">&laquo; Function closures</a>
+        
+        
+        <a class="right" href="/blog/posts-output/2019-11-11-foldr-vs-foldl/">Foldr vs foldl &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                <h3>Links</h3>
+                <ul id="links">
+                    <li><a href="http://cryogenweb.org/docs/home.html">Cryogen Docs</a></li>
+                    <li><a href="http://carmenla.me/blog/archives">Carmen's Blog</a></li>
+                    
+                    <li><a href="/blog/pages-output/another-page/">Another Page</a></li>
+                    
+                </ul>
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/blog/posts-output/2019-11-11-programming-paradigms-explained/">Programming paradigms explained</a></li>
+                        
+                        <li><a href="/blog/posts-output/2019-11-11-function-closures/">Function closures</a></li>
+                        
+                        <li><a href="/blog/posts-output/2019-11-11-static-vs-dynamic-type-checking/">Static vs dynamic type checking</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/blog/tags-output/programming-paradigms/">programming-paradigms</a></li>
+                        
+                        <li><a href="/blog/tags-output/closures functional-programming/">closures functional-programming</a></li>
+                        
+                        <li><a href="/blog/tags-output/types/">types</a></li>
+                        
+                        <li><a href="/blog/tags-output/functional-programming folding/">functional-programming folding</a></li>
+                        
+                        <li><a href="/blog/tags-output/expressions statements/">expressions statements</a></li>
+                        
+                        <li><a href="/blog/tags-output/cryogen/">cryogen</a></li>
+                        
+                        <li><a href="/blog/tags-output/very fetch/">very fetch</a></li>
+                        
+                        <li><a href="/blog/tags-output/not fetch/">not fetch</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2019 Roberto Napoli
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/blog/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>
