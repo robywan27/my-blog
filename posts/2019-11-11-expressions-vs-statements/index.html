@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Elucubrations: Expressions vs statements</title>
+    <link rel="canonical" href="http://roby.wan/blog/posts/2019-11-11-expressions-vs-statements/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/blog/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/blog/">Elucubrations</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/blog/">Home</a></li>
+                <li
+                ><a href="/blog/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/blog/pages/about/">About me</a>
+                </li>
+                
+                <li><a href="/blog/feed.xml">RSS</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">11 November 2019</div>
+        
+    </div>
+    <h2>Expressions vs statements</h2>
+</div>
+<div>
+    
+    <h1 id="expressions&#95;vs&#95;statements">Expressions vs statements</h1><p>The aim of this post is to clarify once and for all one of the most basic concepts in programming languages, yet often misunderstood or overlooked by many practitioner software developers: the difference between expressions and statements. <strong>Expressions</strong> is a combination of the basic elements constituting a programming a language which evaluates to a value. <strong>Statements</strong> are standalone units of execution which do not return any value. As such, it is clear that they are used to perform side effects in a program.</p><h2 id="functional&#95;vs&#95;imperative">Functional vs imperative</h2><p>To get an overview of the different paradigms you can refer to article <link to prog paradigms>. Given the definitions above, it is clear that <strong>expressions</strong> constitute the building blocks of the <strong>functional paradigm</strong>, since everything should be always evaluated to give a value, and regardless of the time of invocation, given the same inputs should return same output values out of the expression. Statements, on the other hand, as said previously, are meant to provide side effects to the program, so it is clear that they can't exist in purely functional programs. On the other hand, <strong>statements</strong> are fundamental blocks of the <strong>imperative</strong> style (together with expressions) as they are used to alter the control flow of the program through constructs such as conditionals, loops, procedures.</p><h2 id="examples">Examples</h2><p>Here follow a few examples to illustrate the differences outlined above.<h3 id="if&#95;conditionals">If conditionals</h3> Some languages provide conditionals as expressions while others as statements; it is usually the case that languages that employ statements also provide an equivalent expression form (the ternary operator). If the conditional is an <strong>expression</strong>, it is evaluated to value, which means that it can be for example assigned to a variable or passed as a function argument; basically, it can be treated as any other value. In standard ML one can write for example:</p><pre><code>val acidity = if ph &lt; 7 then &quot;ACID&quot; else if ph = 7 then &quot;NEUTRAL&quot; else &quot;BASE&quot;
+</code></pre><p>It is clear that, being an expression, the conditional is required by the language to provide a value no matter what, thus all possible cases should be considered and a value should be returned for each. In this example the else branches are not optional, because if the ph level is greater or equals to 7, there must be some other value you return.</p><p>If the conditional is a <strong>statement</strong>, it doesn't return a value, so for example it cannot be assigned to a variable, but it is a sort of logical block containing instructions with side effects. In Python you could write an if statement like this:</p><pre><code>acidity = ... # could be any value
+...
+if ph &lt; 7:
+	acidity = &quot;ACID&quot;
+elif ph == 7:
+	acidity = &quot;NEUTRAL&quot;
+else:
+	acidity = &quot;BASE&quot;
+</code></pre><p>This snippet shows that, no matter which branch is taken, the statement mutates the value of the variable <code>acidity</code>. Note that it would be illegal syntax to assign this block to the variable <code>acidity</code>. Finally, the language does not enforce you to provide a value for all the possible values of <code>ph</code>, you could in fact only define the first if branch and ignore the other cases.</p><h3 id="loops">Loops</h3><p>Imperative languages provide different constructs to loop over series of values or data structures (<code>for</code>, <code>foreach</code>, <code>while</code>, ...) which produce side effects. Functional languages instead do not provide a loop construct, but rely on the mechanism of recursion over data structures to implement it, since a value is returned out of it.</p><h3 id="languages&#95;mixing&#95;both&#95;paradigms">Languages mixing both paradigms</h3><p>It is now clear how languages that mix both the functional and imperative (e.g. object-oriented) styles make you define a certain construct either as an expression or as a statement respectively. For example, in Kotlin the body of a function can be defined as:</p><ul><li>functional style: <code>fun f&#40;&#41; = when {...}</code> the body is an expression and when it is evaluated to produce a value, this is assigned to the function.</li><li>oo style:<pre><code>fun f&#40;ch: Char&#41; {
+	ch = ch + 1
+	print&#40;ch&#41;
+	return ch					
+}
+</code></pre>the body is a statement composed of a sequence of instructions producing side effects.</li></ul><h2 id="wrap-up">Wrap-up</h2><p>We have seen that while expressions are evaluated to return a value, statements do not return any value, performing instead side effects. As such, programs written in the imperative style are constituted by both expressions and statements which implement some logic altering the state of the program (e.g. conditions, looping). The functional paradigm instead mandates the exclusive usage of expressions since by definition side effects are not admitted. The <strong>advantages</strong> of using <strong>expressions over statements</strong> is first of all that the program is contained from the side effects which would be introduced were you to use statements. Another advantage is that all constructs in the program are always evaluated to a value; as such, they can be passed around in the program as you would with simple values such as primitives or simple expressions. This favours composition, since the program itself is an expression made out of other expressions which produce a value. This means that the program can be passed around, returned or composed, allowing for further flexibility.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/blog/tags/expressions statements/">expressions statements</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/blog/posts/2019-11-11-foldr-vs-foldl/">&laquo; Foldr vs foldl</a>
+        
+        
+        <a class="right" href="/blog/posts/2016-01-07-docs/">Quick Start Guide &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                <h3>Links</h3>
+                <ul id="links">
+                    <li><a href="http://cryogenweb.org/docs/home.html">Cryogen Docs</a></li>
+                    <li><a href="http://carmenla.me/blog/archives">Carmen's Blog</a></li>
+                    
+                    <li><a href="/blog/pages/another-page/">Another Page</a></li>
+                    
+                </ul>
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/blog/posts/2019-11-11-programming-paradigms-explained/">Programming paradigms explained</a></li>
+                        
+                        <li><a href="/blog/posts/2019-11-11-function-closures/">Function closures</a></li>
+                        
+                        <li><a href="/blog/posts/2019-11-11-static-vs-dynamic-type-checking/">Static vs dynamic type checking</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/blog/tags/programming-paradigms/">programming-paradigms</a></li>
+                        
+                        <li><a href="/blog/tags/closures functional-programming/">closures functional-programming</a></li>
+                        
+                        <li><a href="/blog/tags/types/">types</a></li>
+                        
+                        <li><a href="/blog/tags/functional-programming folding/">functional-programming folding</a></li>
+                        
+                        <li><a href="/blog/tags/expressions statements/">expressions statements</a></li>
+                        
+                        <li><a href="/blog/tags/cryogen/">cryogen</a></li>
+                        
+                        <li><a href="/blog/tags/very fetch/">very fetch</a></li>
+                        
+                        <li><a href="/blog/tags/not fetch/">not fetch</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2019 roby-wan
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/blog/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>
