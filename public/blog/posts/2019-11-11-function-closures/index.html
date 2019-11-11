@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Elucubrations: Function closures</title>
+    <link rel="canonical" href="http://roby.wan/blog/posts/2019-11-11-function-closures/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="/blog/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/blog/">Elucubrations</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ><a href="/blog/">Home</a></li>
+                <li
+                ><a href="/blog/archives/">Archives</a></li>
+                
+                <li
+                >
+                <a href="/blog/pages/about/">About me</a>
+                </li>
+                
+                <li><a href="/blog/feed.xml">RSS</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-lg-9">
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <div id="post-meta" class="row">
+        <div class="col-lg-6">11 November 2019</div>
+        
+    </div>
+    <h2>Function closures</h2>
+</div>
+<div>
+    
+    <p>The topic of this post is function closures. Closure refers to the context that is passed to a function when it is defined. Basically, the state of the variables that are in the lexical scope when the function is defined is captured and retained in the function. Thus, when the function is subsequently invoked, the variables referenced by the function retain the value they possessed in the lexical scope of the function when it was defined, even though the current scope may be completely different! In Javascript we could write for example:</p><pre><code>let x = 4;
+let f = y =&gt; y + x;
+...
+x = 7;
+f&#40;2&#41;; // this will return the value 6
+</code></pre><p>As visible from this simple example, the variable <code>x</code> is in the lexical scope of the function <code>f</code> at the moment of its declaration and is bound to the value <code>4</code>. At a later point in the program the value of the variable <code>x</code> is changed to <code>7</code>, and the variable <code>x</code> is in the lexical scope when the function is invoked in the last line. However, the result of the function application is <code>6</code> instead of <code>9</code>. The reason for this is that function <code>f</code> had a closure over <code>x</code> when <code>f</code> was defined, so no matter what value <code>x</code> may have in the future, it is still bound to <code>4</code> any time <code>f</code> is invoked. The same would be valid even if <code>x</code> would not be in the current scope at the moment function <code>f</code> is invoked. This simple example illustrated an important feature of closures: functions can store the information present in the lexical scope where they are defined. The implications of this are huge, and many idioms and patterns have found foundation from this concept.</p><h1 id="currying">Currying</h1><h1 id="memoization">Memoization</h1><p>The memoization technique is useful when you want to cache the result of some expensive computation. It basically consists in storing a local reference inside a function to a variable defined outside the function; its value is going to be used in some expensive computation. The first time the function is invoked, you may check whether the variable is defined (you may also use a boolean flag for the purpose of checking), and since it is not, the function body is evaluated to produce the result of the computation which is going to be stored in a local variable. So, any subsequent times the function is called, the function will limit itself to return the result of the computation instead of recomputing it every time.</p><h1 id="library&#95;wrapping">Library wrapping</h1><p>Another example of pattern commonly employed in Javascript is library wrapping, also known with the name of revealing module pattern, and it is used to create a module abstraction in an environment were every element would have public visibility otherwise.</p>
+</div>
+
+<div id="post-tags">
+    <b>Tags: </b>
+    
+    <a href="/blog/tags/closures functional-programming/">closures functional-programming</a>
+    
+</div>
+
+
+    <div id="prev-next">
+        
+        <a href="/blog/posts/2019-11-11-programming-paradigms-explained/">&laquo; Programming paradigms explained</a>
+        
+        
+        <a class="right" href="/blog/posts/2019-11-11-static-vs-dynamic-type-checking/">Static vs dynamic type checking &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div id="sidebar">
+                <h3>Links</h3>
+                <ul id="links">
+                    <li><a href="http://cryogenweb.org/docs/home.html">Cryogen Docs</a></li>
+                    <li><a href="http://carmenla.me/blog/archives">Carmen's Blog</a></li>
+                    
+                    <li><a href="/blog/pages/another-page/">Another Page</a></li>
+                    
+                </ul>
+                
+                <div id="recent">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        
+                        <li><a href="/blog/posts/2019-11-11-programming-paradigms-explained/">Programming paradigms explained</a></li>
+                        
+                        <li><a href="/blog/posts/2019-11-11-function-closures/">Function closures</a></li>
+                        
+                        <li><a href="/blog/posts/2019-11-11-static-vs-dynamic-type-checking/">Static vs dynamic type checking</a></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div id="tags">
+                    <h3>Tags</h3>
+                    <ul>
+                        
+                        <li><a href="/blog/tags/programming-paradigms/">programming-paradigms</a></li>
+                        
+                        <li><a href="/blog/tags/closures functional-programming/">closures functional-programming</a></li>
+                        
+                        <li><a href="/blog/tags/types/">types</a></li>
+                        
+                        <li><a href="/blog/tags/functional-programming folding/">functional-programming folding</a></li>
+                        
+                        <li><a href="/blog/tags/expressions statements/">expressions statements</a></li>
+                        
+                        <li><a href="/blog/tags/cryogen/">cryogen</a></li>
+                        
+                        <li><a href="/blog/tags/very fetch/">very fetch</a></li>
+                        
+                        <li><a href="/blog/tags/not fetch/">not fetch</a></li>
+                        
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>Copyright &copy; 2019 roby-wan
+        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/blog/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>
