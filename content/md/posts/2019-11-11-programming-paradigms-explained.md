@@ -1,6 +1,6 @@
 {:title "Programming paradigms explained"
  :layout :post
- :tags  ["programming-paradigms"]}
+ :tags  ["fundamentals"]}
 
 The topic of this post concerns something fundamental in the matter of programming: programming paradigms. Note that, while there exist other paradigms other than the ones considered here, these will not be treated as they are out of the scope of this post.
 We will first consider the two main approaches overarching all the other paradigms: imperative and declarative. I also advice to have a look at the definitions provided in the very first chapter of *Structure and Interpretation of Computer Programs* [^1] for a very good explanation of the difference between the two.

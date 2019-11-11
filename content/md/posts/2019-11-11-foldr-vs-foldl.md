@@ -1,6 +1,6 @@
 {:title "Foldr vs foldl"
  :layout :post
- :tags  ["functional-programming folding"]}
+ :tags  ["functional programming" "haskell"]}
 
 Folding is one important topic in functional programming. It is a pattern exploiting the higher-order capability to compose functions, i.e. functions can be passed other functions arguments or can return a function. This pattern is used to employ common iterative operations over lists which reduce to a single result. This is in fact the algorithm behind the common library function *reduce* implemented in most common programming languages nowadays. There are two variants of folding depending on the direction in which the computational process unfolds, so either right or left. This gives the names of *foldr* and *foldl*. The examples that follow will be written in Haskell for conciseness. I advice the book by Hutton [^1] to have an introduction to these concepts or the  edX MOOC [^2] which also provides plenty of exercises to consolidate the knowledge.
 

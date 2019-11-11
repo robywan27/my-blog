@@ -1,6 +1,6 @@
 {:title "Function closures"
  :layout :post
- :tags  ["closures functional-programming"]}
+ :tags  ["fundamentals" "functional programming"]}
 
 The topic of this post is function closures. Closure refers to the context that is passed to a function when it is defined. Basically, the state of the variables that are in the lexical scope when the function is defined is captured and retained in the function. Thus, when the function is subsequently invoked, the variables referenced by the function retain the value they possessed in the lexical scope of the function when it was defined, even though the current scope may be completely different! In Javascript we could write for example:
 ```

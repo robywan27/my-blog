@@ -1,6 +1,6 @@
 {:title "Expressions vs statements"
  :layout :post
- :tags  ["expressions statements"]}
+ :tags  ["fundamentals"]}
 
 
 # Expressions vs statements

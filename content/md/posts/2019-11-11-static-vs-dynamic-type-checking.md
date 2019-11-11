@@ -1,6 +1,6 @@
 {:title "Static vs dynamic type checking"
  :layout :post
- :tags  ["types"]}
+ :tags  ["fundamentals" "type system"]}
 
 The type system is one of the fundamental elements which make up a programming language. There are two main categories under which most languages fall into: static and dynamic type checking. This taxonomy is orthogonal to that of programming paradigms such as object-oriented and functional. 
 
