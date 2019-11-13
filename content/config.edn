@@ -1,4 +1,4 @@
-{:site-title           "Elucubrations"
+{:site-title           "roby-wan $ elucubrations"
  :author               "roby-wan"
  :description          "Personal blogging site about topics in the landscape of programming languages, software development, computer science"
  :site-url             "https://robywan27.github.io"
@@ -17,7 +17,7 @@
  :sass-src             []
  :sass-path            "sass"
  :compass-path         "compass"
- :theme                "blue"
+ :theme                "my-theme"
  :resources            ["img"]
  :keep-files           [".git"]
  :disqus?              false
