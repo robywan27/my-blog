@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Elucubrations</title>
+    <title>roby-wan $ elucubrations</title>
     <link rel="canonical" href="https://robywan27.github.io/my-blog/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
@@ -10,129 +10,181 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
     <link href="/my-blog/css/screen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
 
 <nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/my-blog/">Elucubrations</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li  class="active" ><a href="/my-blog/">Home</a></li>
-                <li
-                ><a href="/my-blog/archives/">Archives</a></li>
-                
-                <li
-                >
-                <a href="/my-blog/pages/about/">About me</a>
-                </li>
-                
-                <li><a href="/my-blog/feed.xml">RSS</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div><!--/.container-fluid -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/my-blog/">(roby-wan)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li  class="active" ><a href="/my-blog/">Home</a></li>
+            <li
+            ><a href="/my-blog/archives/">Archives</a></li>
+            <li
+            ><a href="/my-blog/tags/">Tags</a></li>
+            
+            <li
+            >
+            <a href="/my-blog/pages/about/">About me</a>
+            </li>
+            
+            <li><a href="/my-blog/feed.xml">RSS</a></li>            
+        </ul>
+    </div><!--/.nav-collapse -->
 </nav>
 
 
-<div class="container">
-
-
-    <div class="row">
-        <div class="col-lg-9">
+<div>
+    <div>
+        <div>
             <div id="content">
                 
 <div id="post">
     <div class="post-header">
-    <div id="post-meta" class="row">
-        <div class="col-lg-6">11 November 2019</div>
-        
+    <h1>foldr vs foldl</h1>
+    <div class="container">
+        <div id="post-meta" class="row">
+            <div class="col-sm-2 nopadding">11 November 2019</div>
+            
+            <div id="post-tags" class="col-sm-auto">
+                <b>Tags: </b>
+                
+                <a href="/my-blog/tags/haskell/">haskell</a>
+                
+                <a href="/my-blog/tags/functional programming/">functional programming</a>
+                
+            </div>
+            
+        </div>    
     </div>
-    <h2>Programming paradigms explained</h2>
 </div>
-<div>
+<div id="post-body">
     
-    <p>The topic of this post concerns something fundamental in the matter of programming: programming paradigms. Note that, while there exist other paradigms other than the ones considered here, these will not be treated as they are out of the scope of this post. We will first consider the two main approaches overarching all the other paradigms: imperative and declarative. I also advice to have a look at the definitions provided in the very first chapter of <em>Structure and Interpretation of Computer Programs</em> <a href='#fn-1' id='fnref1'><sup>1</sup></a> for a very good explanation of the difference between the two.</p><h1 id="imperative">Imperative</h1><p>Imperative is concerned with the <em>how-to</em> knowledge of an algorithm, i.e. it details the sequence of steps or instructions necessary to accomplish a certain algorithm. An analogy to visualise this could be for example the following sequence of instructions to go from point A to point B:</p><pre><code>move two cells to the right
-move one cell to the top
-move five cells to the right
-...
-</code></pre><h1 id="declarative">Declarative</h1><p>Declarative deals instead with the <em>what-is</em> knowledge, thus it provides a definition but does not specify the steps for a certain algorithm. This approach is more proper to mathematics, mathematical formulae are a very good example of declarative knowledge. For instance, to calculate the hypotenuse of a right triangle you could use the Pythagorean theorem <code>c&#94;2 = a&#94;2 + b&#94;2&quot;</code>. Note that it does not give you a list of instructions of how to calculate the hypotenuse, just a definition.</p><h1 id="main&#95;paradigms">Main paradigms</h1><p>Now we will consider the most common paradigms.</p><h1 id="procedural">Procedural</h1><p>This is the paradigm used to indicate those programs in which the code is organised into logical units called procedures. Contrarily to functions, procedures do not return any value, but act simply as groupings of instructions. This style of programming is the first to have been employed and dates back to Fortran. The main merits of this paradigm is that of introducing modularity and scoping into programs. Note that this style is purely imperative.</p><h1 id="object-oriented">Object-oriented</h1><p>Object-oriented is perhaps the most well-known paradigm since it has been since the late '80s-'90s the de-facto standard in the industry. This style differs from the procedural in that it introduces several concepts such as class, interface, inheritance, polymorphism which add layers of abstraction to the program and model the reality with entities interacting between each others. Their interactions cause mutations in the state of the objects, which can lead to untameable complexity if not properly managed and kept under control with the proper amount of testing. A complete treaty of this paradigm is out of the scope of this post, as there are loads of good resources out there explaining exhaustively OO concepts <a href='#fn-2' id='fnref2'><sup>2</sup></a>.  This style of programming is imperative.</p><h1 id="functional">Functional</h1><p>According to this paradigm, programs should be composed of pure functions and immutable data structures. Pure functions are functions which do not cause any side effect, i.e. they do not change the state of the program. Immutable data structures indicate that any data structure in the program is not mutated; in order to perform computations on these structures, copies are made and acted on. Another characteristic of the functional style is that functions are first-class citizens, i.e. they can be treated as any other value, thus assigned to variables, passed around in functions either as arguments or return values, etc. This makes the program more declarative since you define the specification of a computational process through pure functions and their composition instead of defining the sequence of instructions which implements the required computational process. Note that for real applications a purely functional approach by itself is pretty much useless, as the program would just act as a box computing things but without any connection with the outer world. For this reason, even pure functional languages such as Haskell provide mechanisms to deal with state mutation or side effects. This comes to the cost of losing the declarative quality typical of functional programs. An example of this in Haskell is the <code>do</code> block for monads, useful to deal with side effects:</p><pre><code>do
-	putStrLn &quot;hello&quot;
-	putStrLn &quot;world&quot;
-</code></pre><p>Another example is the <code>begin</code> block in Scheme or Racket to express sequences of instructions:</p><pre><code>&#40;begin
-  &#40;printf &quot;hello&quot;&#41;
-  &#40;+ 1 2&#41;&#41;
-</code></pre><p><a href='#fn-3' id='fnref3'><sup>3</sup></a> <a href='https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html'>https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html</a>  <a href='https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/1a-overview-and-introduction-to-lisp/'>https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/1a-overview-and-introduction-to-lisp/</a> <a href='#fn-4' id='fnref4'><sup>4</sup></a> <a href='https://www.goodreads.com/book/show/4845.Code_Complete'>https://www.goodreads.com/book/show/4845.Code_Complete</a> <a href='http://propella.sakura.ne.jp/earlyHistoryST/EarlyHistoryST.html'>http://propella.sakura.ne.jp/earlyHistoryST/EarlyHistoryST.html</a> <ol class='footnotes'><li id='fn-1'><a href='#fnref1'>&#8617;</a></li><li id='fn-2'><a href='#fnref2'>&#8617;</a></li><li id='fn-3'><a href='#fnref3'>&#8617;</a></li><li id='fn-4'><a href='#fnref4'>&#8617;</a></li></ol></p>
+    <div class="paragraph">
+<p>Folding is one important topic in functional programming. It is a pattern exploiting the higher-order capability to compose functions, i.e. functions can be passed other functions arguments or can return a function. This pattern is used to employ common iterative operations over lists which reduce to a single result. This is in fact the algorithm behind the common library function <em>reduce</em> implemented in most common programming languages nowadays. There are two variants of folding depending on the direction in which the computational process unfolds, so either right or left. This gives the names of <strong>foldr</strong> and <strong>foldl</strong>. The examples that follow will be written in Haskell for conciseness. I advice the book by Hutton <sup class="footnote" id="_footnote_hutton">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> to have an introduction to these concepts or the  edX MOOC <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup> which also provides plenty of exercises to consolidate the knowledge.</p>
 </div>
-
-<div id="post-tags">
-    <b>Tags: </b>
-    
-    <a href="/my-blog/tags/fundamentals/">fundamentals</a>
-    
+<h1 id="_foldr" class="sect0">foldr</h1>
+<div class="paragraph">
+<p>The formula used to express this pattern is the following one, written in Haskell <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> (the type signature is omitted for simplicity purposes):</p>
 </div>
-
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>foldr f v [] = v
+foldr f v (x : xs) = f x (foldr f v xs)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Even though it may look daunting at first sight, it becomes very clear and intuitive once you have grasped the meaning of it. This formula is written in recursive form, so the first line expresses the base case while the second line expresses the recursive case. The left-hand side of the formula is the application of the function <code>foldr</code> on parameters:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>f</code>, the name of the function</p>
+</li>
+<li>
+<p><code>v</code> , the initial value</p>
+</li>
+<li>
+<p><code>[]</code> is the empty list; the base case means that at this point of the computation there are no more elements in the list to consider</p>
+</li>
+<li>
+<p><code>(x : xs)</code>, which is the Haskell notation to express a list composed of head (first element) <code>x</code> and tail (all elements from second to last) <code>xs</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Now for the interesting part, the right-hand side of the formula. In the base case, the function simply returns the initial value. Easy. In the recursive case, function <code>f</code> is applied to the first element of the list <code>x</code>. After that, the <code>foldr</code> function is called recursively on the remaining elements of the list.
+Now it is clear that the computational process of <code>foldr</code> has a recursive shape.
+Let&#8217;s make an example to illustrate what previously said.
+Turns out that the common higher-order pattern <code>map</code> can be rewritten in terms of <code>foldr</code>: <code>mapR f = foldr (\ x xs &#8594; f x : xs) []</code>.
+Here the application of function <code>f</code> over the list is defined in terms of an anonymous function (lambda function) taking two parameters <code>x</code> and <code>xs</code>. The empty list <code>[]</code> is  the initial value (<code>v</code> in the formula above). <code>x</code> represents the first item in the list starting from the end of the list, while <code>xs</code> represents the accumulator. So the lambda function returns a list composed of the function application on element <code>x</code> concatenated with the accumulator <code>xs</code>. To properly understand how the computation unfolds, I find it more intuitive to reason backwards, starting from the last element moving backwards to the first; the accumulator is then compounded starting with the empty list on the right and prepending the elements of the list one by one starting from the last element. For example applying <code>map</code> on list <code>[1,2,3]</code> taking function <code>(*2)</code> gives the list <code>[2,4,6]</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>map (*2) [1,2,3]
+((*2) 1) : ((*2) 2) : ((*2) 3) : []
+2 : 4 :  6 : [] = [2,4,6]</code></pre>
+</div>
+</div>
+<h1 id="_foldl" class="sect0">foldl</h1>
+<div class="paragraph">
+<p>The formula used to express this pattern is the following one, written in Haskell <sup class="footnoteref">[<a class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup> (the type signature is omitted for simplicity purposes):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>foldl f v [] = v
+foldl f v (x : xs) = foldl f (f v x) xs</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This function shares many similarities with the one expressed above for <code>foldr</code>. The difference lies in the right-hand side of the recursive case formula. <code>foldl</code> is called recursively, and it is given the following arguments:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>f</code>, the function</p>
+</li>
+<li>
+<p><code>(f v x)</code>, is the accumulator, which is given by the application of <code>f</code> on the previous value of the accumulator <code>v</code> and the first element of the list <code>x</code></p>
+</li>
+<li>
+<p><code>xs</code>, the remaining elements of the list starting from the second one</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is clear that <code>foldl</code> follows an iterative shape instead, as the algorithm starts by applying the function to the base case and the first element of the list; this is the new accumulator. Then the function is applied to the next element and the accumulator, which results in a new accumulator. This process continues until the end of the list is reached. Note that I have not said that the accumulator assumes a new value at each step, because the evaluation is done after the unwrapping of the list starting from right to left, which gives the name to the pattern.
+For symmetry, I am going to express the function <code>map</code> using <code>foldl</code>:
+<code>mapL f = foldl (\ xs x &#8594; xs ++ [f x]) []</code>.
+The lambda function takes two parameters: <code>xs</code> is the accumulator, while <code>x</code> is the first element of the list. A list is returned, composed of the application of <code>f</code> on <code>x</code>, to which is prepended the accumulator <code>xs</code>. Note that the accumulator is the initial value <code>[]</code>. So the computation unfolds from left to right, and once the end of the list is reached, it starts folding back from right to left, hence the name. Applying <code>map</code> on list <code>[1,2,3]</code> taking function <code>(*2)</code> gives the list <code>[2,4,6]</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>map (*2) [1,2,3]
+(([] ++ [(*2) 1]) ++ [(*2) 2]) ++ [(*2) 3]
+[] ++ [2] ++ [4] ++ [6] = [2,4,6]</code></pre>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="http://www.cs.nott.ac.uk/~pszgmh/pih.html" class="bare">http://www.cs.nott.ac.uk/~pszgmh/pih.html</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://www.edx.org/course/introduction-functional-programming-delftx-fp101x-0" class="bare">https://www.edx.org/course/introduction-functional-programming-delftx-fp101x-0</a>
+</div>
+</div>
+</div>
 
     
 
     <div id="prev-next">
         
         
-        <a class="right" href="/my-blog/posts/2019-11-11-function-closures/">Function closures &raquo;</a>
+        <a class="right" href="/my-blog/posts/2019-11-11-expressions-vs-statements/">Expressions vs statements &raquo;</a>
         
     </div>
 </div>
 
             </div>
         </div>
-
-        <div class="col-md-3">
-            <div id="sidebar">                
-                
-                <div id="recent">
-                    <h3>Recent Posts</h3>
-                    <ul>
-                        
-                        <li><a href="/my-blog/posts/2019-11-11-programming-paradigms-explained/">Programming paradigms explained</a></li>
-                        
-                        <li><a href="/my-blog/posts/2019-11-11-function-closures/">Function closures</a></li>
-                        
-                        <li><a href="/my-blog/posts/2019-11-11-static-vs-dynamic-type-checking/">Static vs dynamic type checking</a></li>
-                        
-                    </ul>
-                </div>
-                
-                
-                <div id="tags">
-                    <h3>Tags</h3>
-                    <ul>
-                        
-                        <li><a href="/my-blog/tags/fundamentals/">fundamentals</a></li>
-                        
-                        <li><a href="/my-blog/tags/functional programming/">functional programming</a></li>
-                        
-                        <li><a href="/my-blog/tags/type system/">type system</a></li>
-                        
-                        <li><a href="/my-blog/tags/haskell/">haskell</a></li>
-                        
-                    </ul>
-                </div>
-                
-            </div>
-        </div>
     </div>
+
     <footer>Copyright &copy; 2019 roby-wan
-        <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+    <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
 </div>
+
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="/my-blog/js/highlight.pack.js" type="text/javascript"></script>
