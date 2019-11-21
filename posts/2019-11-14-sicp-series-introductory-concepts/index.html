@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>roby-wan $ ramblings - SICP series - Introductory Concepts</title>
+    <link rel="canonical" href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-introductory-concepts/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="/my-blog/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/my-blog/">(ramblings)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li ><a href="/my-blog/">Home</a></li>
+            <li
+            ><a href="/my-blog/archives/">Archives</a></li>
+            <li
+            
+                
+                    
+                         class="active" 
+                         
+                     
+                 
+            ><a href="/my-blog/tags/">Tags</a></li>
+            
+            <li
+            >
+            <a href="/my-blog/pages/about/">About me</a>
+            </li>
+            
+            <li><a href="/my-blog/feed.xml">RSS</a></li>            
+        </ul>
+    </div><!--/.nav-collapse -->
+</nav>
+
+
+<div>
+    <div>
+        <div>
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <h1>SICP series - Introductory Concepts</h1>
+    <div class="container">
+        <div id="post-meta" class="row">
+            <div class="col-sm-2 nopadding">14 November 2019</div>
+            
+            <div id="post-tags" class="col-sm-auto">
+                <b>Tags: </b>
+                
+                <a href="/my-blog/tags/fundamentals/">fundamentals</a>
+                
+                <a href="/my-blog/tags/SICP/">SICP</a>
+                
+            </div>
+            
+        </div>    
+    </div>
+</div>
+<div id="post-body">
+    
+    <div class="paragraph">
+<p>This post is going to illustrate some of the introductory concepts presented in the book <code>Structure and Interpretation of Computer Programs</code> <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="sect1">
+<h2 id="_terminology">Terminology</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A <code>procedure</code> is a series of mechanical steps to be followed in order to deduce the value associated to a problem. It is a <em>recipe</em> for describing the <em>how-to</em> imperative knowledge.</p>
+</div>
+<div class="paragraph">
+<p>A <code>process</code> is the actual sequence of steps within a computer which concerns a particular version of the problem.</p>
+</div>
+<div class="paragraph">
+<p>A <code>language</code> provides the tools to capture procedures and describe processes; it is composed of several components.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>vocabulary</code> - basic elements of computation</p>
+</li>
+<li>
+<p><code>syntax</code> - rules for writing compound expressions</p>
+</li>
+<li>
+<p><code>semantics</code> - rules to deduce meaning of constructs</p>
+</li>
+<li>
+<p><code>procedure</code> - rules for capturing process of evaluation</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>abstraction</strong></p>
+</div>
+<div class="paragraph">
+<p>In order to create a language then the following ones are the steps to be taken.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>create a set of primitive elements in a language (simple data and procedures) - <code>primitives</code></p>
+</li>
+<li>
+<p>create a set of rules for combining elements of the language - <code>means of combination</code></p>
+</li>
+<li>
+<p>create a set of rules for abstracting elements of the language - <code>means of abstraction</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>From an implementation point of view in Scheme, the previous elements are translated into the following constructs.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>primitives: numbers, strings, booleans, built-in procedures</p>
+</li>
+<li>
+<p>means of combintation: open parenthesis, expression evaluating to a value, possibly other expressions, close parenthesis
+Example: (+ 5 6 (* 2 3))</p>
+</li>
+<li>
+<p>means of abstraction: define keyword, name, expression whose value is associated to that name
+Example: (define total (- 100 30))</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The goal of writing procedures is then to control complexity; procedures lead to the fundamental concept of <code>abstraction</code>. A procedure can then be seen as a black box, in which the details of its implementation are hidden and detached from its use. To put it all together the elements of a language allow to create complex systems through the means of combination of primitives, which can then be abstracted into procedures and then be used as primitive elements themselves. This cycle is beneficial for designing, maintaining and extending complex computational systems.</p>
+</div>
+<div class="paragraph">
+<p><strong>interfaces and programming paradigms</strong></p>
+</div>
+<div class="paragraph">
+<p>Abstraction allows to isolate components of a system, but it also provides the <code>interfaces</code> to interconnect those simple components. Some conventions or programming paradigms are for example object-oriented and streams.</p>
+</div>
+<div class="paragraph">
+<p><strong>meta-linguistic abstraction</strong></p>
+</div>
+<div class="paragraph">
+<p>The most powerful tool a language provide when the aforementioned tools are not sufficient to solve some problems is known as <code>meta-linguistic abstraction</code>. This consists in creating languages specifically oriented at some problem domain.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusion">Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To sum up the previous points, the following outline provides an overview of the major sections which comprise the book.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>procedure and data abstraction</p>
+</li>
+<li>
+<p>conventional interfaces and programming paradigms</p>
+</li>
+<li>
+<p>meta-linguistic abstractions</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html" class="bare">https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html</a>
+</div>
+</div>
+</div>
+
+    <div id="prev-next">
+        
+        <a href="/my-blog/posts/2019-11-14-sicp-series-metacircular-evaluator/">&laquo; SICP series - Metacircular Evaluator</a>
+        
+        
+        <a class="right" href="/my-blog/posts/2019-11-14-sicp-series-intro/">SICP series - Introduction &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>Copyright &copy; 2019 roby-wan
+    <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/my-blog/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

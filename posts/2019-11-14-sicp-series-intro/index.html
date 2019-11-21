@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>roby-wan $ ramblings - SICP series - Introduction</title>
+    <link rel="canonical" href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-intro/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="/my-blog/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/my-blog/">(ramblings)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li ><a href="/my-blog/">Home</a></li>
+            <li
+            ><a href="/my-blog/archives/">Archives</a></li>
+            <li
+            
+                
+                    
+                         class="active" 
+                         
+                     
+                 
+            ><a href="/my-blog/tags/">Tags</a></li>
+            
+            <li
+            >
+            <a href="/my-blog/pages/about/">About me</a>
+            </li>
+            
+            <li><a href="/my-blog/feed.xml">RSS</a></li>            
+        </ul>
+    </div><!--/.nav-collapse -->
+</nav>
+
+
+<div>
+    <div>
+        <div>
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <h1>SICP series - Introduction</h1>
+    <div class="container">
+        <div id="post-meta" class="row">
+            <div class="col-sm-2 nopadding">14 November 2019</div>
+            
+            <div id="post-tags" class="col-sm-auto">
+                <b>Tags: </b>
+                
+                <a href="/my-blog/tags/fundamentals/">fundamentals</a>
+                
+                <a href="/my-blog/tags/SICP/">SICP</a>
+                
+            </div>
+            
+        </div>    
+    </div>
+</div>
+<div id="post-body">
+    
+    <div class="paragraph">
+<p>With this post I am going to start a series of posts concerning what I believe (and not only me) to be one of the most valuable resources on programming and more in general computer science: the mythical <strong>Structure and Interpretation of Computer Programs</strong>. The full content of the book is available online at the link <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>; I also warmly advise to have a look at the MIT courseware which offers valuable resources which aid the understanding of the book; I recommend in particular the videos (which can be found here <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>) as both Sussman and Abelson, the authors of the book, are phenomenal teachers. The lecture notes are also useful and can be found here <sup class="footnote">[<a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote.">3</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>My purpose with this series of posts is to illustrate the major topics of the book, but I will not cover all of them though; in particular, I will leave out the whole Chapter 5 which dives deeply low-level.</p>
+</div>
+<div class="paragraph">
+<p><em>Small preamble before starting</em>: I have to clarify that I did not read the book fully nor did I complete the exercises (I know the hacker community will hate me for this and I will be branded as poser). To actually get the most out of the book, one should complete the notoriously challenging exercises, which will your understanding to the next level. It is however particularly time consuming and requires a hell of a determination, so be prepared.</p>
+</div>
+<div class="sect1">
+<h2 id="_what_is_it_about">What is it about</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So, the reason why this book is considered an essential reading is because it does the amazing job of compacting an astonishing number of fundamental topics related to programming, software development and language design. Historically, this book used to be taught to freshmen of MIT, so to people with likely no prior experience in programming and computer science. I can imagine that a student successfully completing the exam would be well equipped for any further topic (I would personally hire him on the spot already as he knows way more than many practicioners in the industry). I believe nonetheless that if someone is experienced this book is equally valuable, as it allows the reader to go through the concepts he may have been exposed to by presenting them in a logical and coherent framework. This book may shed a new light on concepts which the reader may have not been reasoning about so much and overall will bring his understanding to the next level. Besides, the reader will finally have the opportunity to get acquainted if not even becoming well-versed with the very cool Scheme, one dialect of the revered and feared Lisp language. I affirm that fundamental concepts should be very well founded not only for the academic, but in particular for the practicioner, as he will build software which will have a reach and impact to the world and its people.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contents">Contents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>in this paragraph I will list the main concepts which the book covers to provide an overview of the breadth of topics it touches:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Abstraction through procedures</p>
+</li>
+<li>
+<p>Imperative vs declarative</p>
+</li>
+<li>
+<p>Functional programming (lambda function, pure functions, higher-order functions, &#8230;&#8203;)</p>
+</li>
+<li>
+<p>Iterative vs recursive algorithms</p>
+</li>
+<li>
+<p>Algorithm complexity</p>
+</li>
+<li>
+<p>Abstraction on data focusing on the pair and list as fundamental building blocks of Lisp programs</p>
+</li>
+<li>
+<p>Types</p>
+</li>
+<li>
+<p>Abstract data type</p>
+</li>
+<li>
+<p>Mutation of state</p>
+</li>
+<li>
+<p>The Environment Model as a framework for evaluation</p>
+</li>
+<li>
+<p>Fundamental data structures: tables, stack, queue, tree, graph</p>
+</li>
+<li>
+<p>Object-oriented programming</p>
+</li>
+<li>
+<p>Concurrency</p>
+</li>
+<li>
+<p>Interpretation for building a language using Scheme</p>
+</li>
+<li>
+<p>Interpretation for building Scheme using Scheme (metacircular evaluator)</p>
+</li>
+<li>
+<p>Lazy evaluation and streams</p>
+</li>
+<li>
+<p>Register machines and compilation (how the evaluation model is actually implemented in the hardware)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_takeaways">Key takeaways</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The book is a gold mine of valuable teachings, but there are a few which I think stand out and should be remembered the most.</p>
+</div>
+<div class="paragraph">
+<p>The fundamental building blocks constituting a language are the following: primitive elements, means of combination (syntax) and means of abstraction (semantics). Further than this, meta-linguistic abstractions provide the tools to create languages suited to any problem domain.</p>
+</div>
+<div class="paragraph">
+<p>Procedural abstraction allows to capture patterns of computation which result in a modular system.</p>
+</div>
+<div class="paragraph">
+<p>Data abstraction allows to decouple the implementation from the usage of the data structures suited to the problem. This also results in added modularity to the system.</p>
+</div>
+<div class="paragraph">
+<p>In Lisp, it turns out that there is not a real boundary between procedure abstraction and data abstraction, as programs are but lists of expressions. One can view a program as a tree composed of expressions expressed in the form of lists. Anything can then be defined both in terms of the procedures which implement its behavior and the data structures which implement it. I will make an article to further flesh out on this.</p>
+</div>
+<div class="paragraph">
+<p>Lisp is a language powerful enough that it allows the programmer to define a language using the language itself. Furthermore, it allows to define the Lisp language by using the language itself (this is referred as metacirular evaluator in the book and is perhaps the most crucial point). The concept is mind-bending as well as illuminating, and I will dedicate another post to elaborate more on this.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html" class="bare">https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/" class="bare">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/</a>
+</div>
+<div class="footnote" id="_footnote_3">
+<a href="#_footnoteref_3">3</a>. <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/lecture-notes/" class="bare">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/lecture-notes/</a>
+</div>
+</div>
+</div>
+
+    <div id="prev-next">
+        
+        <a href="/my-blog/posts/2019-11-14-sicp-series-introductory-concepts/">&laquo; SICP series - Introductory Concepts</a>
+        
+        
+        <a class="right" href="/my-blog/posts/2019-11-13-fp-series-intro/">A brief overview of Haskell &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>Copyright &copy; 2019 roby-wan
+    <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/my-blog/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

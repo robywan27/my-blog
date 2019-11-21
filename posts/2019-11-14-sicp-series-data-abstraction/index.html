@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>roby-wan $ ramblings - SICP series - Data Abstraction</title>
+    <link rel="canonical" href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-data-abstraction/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="/my-blog/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/my-blog/">(ramblings)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li ><a href="/my-blog/">Home</a></li>
+            <li
+            ><a href="/my-blog/archives/">Archives</a></li>
+            <li
+            
+                
+                    
+                         class="active" 
+                         
+                     
+                 
+            ><a href="/my-blog/tags/">Tags</a></li>
+            
+            <li
+            >
+            <a href="/my-blog/pages/about/">About me</a>
+            </li>
+            
+            <li><a href="/my-blog/feed.xml">RSS</a></li>            
+        </ul>
+    </div><!--/.nav-collapse -->
+</nav>
+
+
+<div>
+    <div>
+        <div>
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <h1>SICP series - Data Abstraction</h1>
+    <div class="container">
+        <div id="post-meta" class="row">
+            <div class="col-sm-2 nopadding">14 November 2019</div>
+            
+            <div id="post-tags" class="col-sm-auto">
+                <b>Tags: </b>
+                
+                <a href="/my-blog/tags/fundamentals/">fundamentals</a>
+                
+                <a href="/my-blog/tags/SICP/">SICP</a>
+                
+                <a href="/my-blog/tags/functional programming/">functional programming</a>
+                
+            </div>
+            
+        </div>    
+    </div>
+</div>
+<div id="post-body">
+    
+    <div class="paragraph">
+<p>The previous post <a href="ywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/">Procedural Abstraction</a> dealt with the idea of creating procedures to capture patterns of computation and abstracting them away by suppressing the implementation details and giving them a name so taht it is possible to treat them as primitive elements of the language. The topic of this post tackles a complementary issue to that of procedure abstraction, specifically how to group together pieces of information or data into abstract structures. Even though the problems both sides of abstraction are complementary, it will turn out that they are actually interconnected and thus the distinction among them is blurred. In fact, the procedures to manipulate the elements of a data structure usually have an inherent structure that mimics the data structure. This is just a teaser, but I will come back on this more in detail later.</p>
+</div>
+<div class="sect1">
+<h2 id="_compound_data">Compound Data</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is sometimes handy if we can use data elements which differ from the basic primitives the language provides you. Therefore, there needs to be a way for us to define and use our own data structures, in particular compound data structures. So there needs to be a way to glue simple elements together to form a compound structure which can be treated as a unit piece of primitive data element as well as a way to pull the compound structure&#8217;s constituent pieces apart. This compound structure should be treated as a single unit, which means that it should be possible to pass it as argument and return as a value. This leads to the concept of <code>closure</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>closure</strong>: <em>"the result obtained by creating a compound data structure can itself be treated as a primitive object and thus be input to the creation of another compound object"</em></p>
+</div>
+<div class="sect2">
+<h3 id="_pairs">Pairs</h3>
+<div class="paragraph">
+<p>Scheme provides a basic construct to glue things together, <code>cons</code> (constructor). <code>cons</code> is a procedure which takes two expressions as input, evaluates them and glues those values together to form a <code>pair</code>. In order to get those elements back from the pair Scheme provides the procedures <code>car</code> and <code>cdr</code> which return the first and second element respectively. We have defined a <code>contract</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(cons &lt;x-exp&gt; &lt;y-exp&gt;) ==&gt; &lt;P&gt;  ; constructor
+(car &lt;P&gt;) ==&gt; &lt;x-val&gt;           ; accessor
+(cdr &lt;P&gt;) ==&gt; &lt;y-val&gt;           ; accessor
+(pred? &lt;x&gt;)                     ; predicate
+  ==&gt; #t if pred? evaluates to a pair, else #f</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Furthermore, the contract can be extended to include <code>predicates</code> to check if a given data structure satisfies the contract or not.</p>
+</div>
+<div class="paragraph">
+<p>To portrait an implementation of a contract, the most basic example we could think is that of a 2-D point.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (make-point x y)
+  (cons x y))
+(define (point-x p)
+  (car p))
+(define (point-y p)
+  (cdr p))
+(define (pair? p)
+  (; check details))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_lists">Lists</h3>
+<div class="paragraph">
+<p>Scheme provides another primitive way of gluing together elements, the <code>list</code>. A list is a data structure that can hold an arbitrary number of ordered items. It is in practice implemented under the hood as a sequence of pairs with the following properties:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>car-part of a pair in sequence - holds an item</p>
+</li>
+<li>
+<p>cdr-part of a pair in sequence - holds a pointer to the rest of the list</p>
+</li>
+<li>
+<p>empty-list nil - signals no more pairs or end of the list</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Note that lists are closed under the operations of <code>cons</code>, <code>car</code> and <code>cdr</code>, and can thus be treated as primitives.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../../img/scheme-lists.png" alt="Scheme Lists">
+</div>
+<div class="title">Figure 1. Lists in Scheme</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <div id="prev-next">
+        
+        <a href="/my-blog/posts/2019-11-14-is-computer-science-the-right-name/">&laquo; Is computer science the right name?</a>
+        
+        
+        <a class="right" href="/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/">SICP series - Procedural Abstraction &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>Copyright &copy; 2019 roby-wan
+    <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/my-blog/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>roby-wan $ ramblings - SICP series - Procedural Abstraction</title>
+    <link rel="canonical" href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="/my-blog/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/my-blog/">(ramblings)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li ><a href="/my-blog/">Home</a></li>
+            <li
+            ><a href="/my-blog/archives/">Archives</a></li>
+            <li
+            
+                
+                    
+                         class="active" 
+                         
+                     
+                 
+            ><a href="/my-blog/tags/">Tags</a></li>
+            
+            <li
+            >
+            <a href="/my-blog/pages/about/">About me</a>
+            </li>
+            
+            <li><a href="/my-blog/feed.xml">RSS</a></li>            
+        </ul>
+    </div><!--/.nav-collapse -->
+</nav>
+
+
+<div>
+    <div>
+        <div>
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <h1>SICP series - Procedural Abstraction</h1>
+    <div class="container">
+        <div id="post-meta" class="row">
+            <div class="col-sm-2 nopadding">14 November 2019</div>
+            
+            <div id="post-tags" class="col-sm-auto">
+                <b>Tags: </b>
+                
+                <a href="/my-blog/tags/fundamentals/">fundamentals</a>
+                
+                <a href="/my-blog/tags/SICP/">SICP</a>
+                
+                <a href="/my-blog/tags/functional programming/">functional programming</a>
+                
+            </div>
+            
+        </div>    
+    </div>
+</div>
+<div id="post-body">
+    
+    <div class="paragraph">
+<p>The previous article <a href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-introductory-concepts/">Introductory Concepts</a> exposed procedures as basic components to capture processes. Scheme provides one mechanism to define procedures: the <code>lambda expression</code>. The purpose of this element is to capture common patterns of computation into the body of the procedure. For example in order to group any pattern of the form</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(* 3 3)
+(* 5 5)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>the following lambda expression can be used</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(lambda (x) (* x x))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>to capture the <em>double an element</em> process. It consists of two components, namely the <em>parameters</em> and the <em>body</em> which is evaluated to a value. The lambda expression can be combined with the naming abstraction of the previous article to provide a name to the procedure. The previous expression can then be rewritten in the following manner</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define square (lambda (x) (* x x)))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is thus possible to use the procedure by simply calling it by its name, like <code>(square 5)</code>, which gives the result <code>25</code>.</p>
+</div>
+<div class="paragraph">
+<p>The following steps provide an overview of the steps to abstract processes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>identify modules or stages of a process</p>
+</li>
+<li>
+<p>capture each module within a procedural abstraction</p>
+</li>
+<li>
+<p>construct a procedure to control the interactions between the modules</p>
+</li>
+<li>
+<p>repeat the process within each module as necessary</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_abstraction_and_modularity">Abstraction and Modularity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By means of the procedure, we can treat processes as black boxes in which the implementation details are hidden and detached from the use of the procedure, which can simply be referred by its name or lambda expression. The procedure also exposes a <code>contract</code>, according to which for given inputs of the provided type an output of the specified type will be given. So the black box abstraction hides the details of this contract for converting input to output.</p>
+</div>
+<div class="paragraph">
+<p>Another important concept which allow to create modular systems is that of <code>block structures</code>. It consists in defining procedures inside the body of the lambda expression of a given procedure; by doing so, the internal procedures are accessible only to other expressions within the body of the lambda, but inaccessible outside the scope ofthe procedure. This is important, because internal procedures become part of the implementation details of procedures giving them a higher abstraction power.
+A trivial example to illustrate the concept can be the following one hiding the <em>square</em> lambda inside the <em>sum of squares</em> procedure. Note that normally it would be arguable whether the <em>square</em> procedure should be made private as it can be useful anywhere in the system, but I will stick to this example for simplicity sake.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (sum-of-squares a b)
+  (define (square x)
+    (* x x))
+  (+ (square a) (square b))
+)</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_higher_order_functions">Higher-order Functions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Higher-order procedures bring the concept of procedure abstraction to the next level by capturing common procedural patterns. They take other procedures as arguments or return one as value. This allows to further increase the modularity of the system. As an example let&#8217;s consider different patterns of sum such as the following ones</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (sum-integers a b)
+  (if (&gt; a b)
+    0
+    (+ a (sum-integers (+ 1 a) b))))
+(define (sum-squares a b)
+  (if (&gt; a b)
+    0
+    (+ (square a) (sum-squares (+ 1 a) b))))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is clear both procedures share the same form, so they can be distilled into the following higher-order procedure</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (sum term a next b)
+  (if (&gt; a b)
+    0
+    (+ (term a) (sum term (next a) next b))))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Both <code>term</code> and <code>next</code> are procedures and are passed as arguments to <code>sum</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_recursive_and_iterative_processes">Recursive and iterative processes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The last topic of this post regards the shape a process can assume, which could either be recursive or iterative. The shape of the process determines some of its characteristics such as the space and time complexity. The following two paragraphs are going to go more in detail on each approach.</p>
+</div>
+<div class="sect2">
+<h3 id="_recursive_processes">Recursive Processes</h3>
+<div class="paragraph">
+<p>A recursive process is characterized by a set of deferred operations as long as the computation does not reach the base case; once that point is reached, the stacked up operations are accumulated to give the final result. For example consider the shape for the factorial operation</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(fact 3)
+(* 3 (fact 2))
+(* 3 (* 2 (fact 1)))
+(* 3 (* 2 (* 1)))
+(* 3 (* 2))
+6</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The implementation of the factorial procedure is</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define fact
+  (lambda (n)
+    (if (= n 1)                 # test base case
+      1                         # base case
+      (* n (fact (- n 1))))))   # recursive case</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is clear that the algorithm grows linearly with the size of the argument in both space and time.</p>
+</div>
+<div class="paragraph">
+<p>The steps to design recursive algorithms are the following ones:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>wishful thinking - assume you have avilable a procedure that solves the problem for smaller versions of it</p>
+</li>
+<li>
+<p>decompose the problem - use the solution to smaller sized problems with some operations to get the solution to the larger sized problem</p>
+</li>
+<li>
+<p>identify non-decomposable problems - identify the smallest problem, i.e. base case</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_iterative_processes">Iterative Processes</h3>
+<div class="paragraph">
+<p>Contrary to the recursive process, iterative processes do not require to keep track of deferred operations, but perform the computations without using any additional memory. For this reason additional parameters are needed to store the current state of the computation such as counters and temporary values.
+A possible shape for the iterative factorial algorithm is the following one</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(ifact 3)
+(if (&gt; 1 3) 1 (ifact-helper (* 1 1) (+ 1 1) 3))
+(if (&gt; 2 3) 1 (ifact-helper (* 1 2) (+ 2 1) 3))
+(if (&gt; 3 3) 2 (ifact-helper (* 2 3) (+ 3 1) 3))
+(if (&gt; 4 3) 6 (ifact-helper (* 6 4) (+ 4 1) 3))
+6</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>for the procedure</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define ifact-helper
+  (lambda (product counter n)
+    (if (&gt; counter n)
+      product
+      (ifact-helper (* product counter)
+                    (+ counter 1)
+                    n))))
+(define ifact (lambda (n) (ifact-helper 1 1 n)))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The algorithm grows constantly in space and linearly with the size of the argument in time.</p>
+</div>
+<div class="paragraph">
+<p>To develop an iterative algorithm the following recipe can be followed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>determine a way to accumulate partial answers</p>
+</li>
+<li>
+<p>write a table to analyze</p>
+<div class="ulist">
+<ul>
+<li>
+<p>initialization of first row</p>
+</li>
+<li>
+<p>update rules for other rows</p>
+</li>
+<li>
+<p>how to know when to stop</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>translate rules in Scheme</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <div id="prev-next">
+        
+        <a href="/my-blog/posts/2019-11-14-sicp-series-data-abstraction/">&laquo; SICP series - Data Abstraction</a>
+        
+        
+        <a class="right" href="/my-blog/posts/2019-11-14-sicp-series-metacircular-evaluator/">SICP series - Metacircular Evaluator &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>Copyright &copy; 2019 roby-wan
+    <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/my-blog/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>
