@@ -27,6 +27,11 @@ body {
     color: #777;
 }
 
+.title {
+    color: #777;
+    font-style: italic;   
+}
+
 .navbar-default .navbar-nav li a:hover {
      color: #2a2827; 
 }
@@ -117,19 +122,12 @@ strong {
 pre {
     font-size: 15px;
 }
-pre code {
-    display: block;
-    padding: 0.5em;
-    overflow-wrap: normal;
-    white-space: pre;
-}
 
 code {
     font-family: monospace;
 }
 
 pre, .hljs {
-    /*background-color: #001628;*/
     color: #428bca;
 }
 
