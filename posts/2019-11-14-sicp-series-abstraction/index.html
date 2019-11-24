@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>roby-wan $ ramblings - SICP series - Procedural and Data Abstraction</title>
+    <link rel="canonical" href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-abstraction/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="/my-blog/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/my-blog/">(ramblings)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li ><a href="/my-blog/">Home</a></li>
+            <li
+            ><a href="/my-blog/archives/">Archives</a></li>
+            <li
+            
+                
+                    
+                         class="active" 
+                         
+                     
+                 
+            ><a href="/my-blog/tags/">Tags</a></li>
+            
+            <li
+            >
+            <a href="/my-blog/pages/about/">About me</a>
+            </li>
+            
+            <li><a href="/my-blog/feed.xml">RSS</a></li>            
+        </ul>
+    </div><!--/.nav-collapse -->
+</nav>
+
+
+<div>
+    <div>
+        <div>
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <h1>SICP series - Procedural and Data Abstraction</h1>
+    <div class="container">
+        <div id="post-meta" class="row">
+            <div class="col-sm-2 nopadding">14 November 2019</div>
+            
+            <div id="post-tags" class="col-sm-auto">
+                <b>Tags: </b>
+                
+                <a href="/my-blog/tags/fundamentals/">fundamentals</a>
+                
+                <a href="/my-blog/tags/SICP/">SICP</a>
+                
+                <a href="/my-blog/tags/functional programming/">functional programming</a>
+                
+            </div>
+            
+        </div>    
+    </div>
+</div>
+<div id="post-body">
+    
+    <div class="paragraph">
+<p>The purpose of this post is to provide an example on how <a href="robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/">procedural</a> and <a href="robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-data-abstraction/">data</a> abstractions can be exploited and combined together to build modular systems. At the end of this article you should be convinced that there is actually not a clear distinction between the two types of abstractions, rather they are two sides of the same coin. I am going to outline only the most important points on the picture language defined in the book <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>It is possible to build domain specific languages in Scheme for describing and solving the domain problem. Since the language is embedded within Scheme, it inherits the power of Scheme. The topic of the current post is to build a language to draw pictures in the style of Escher <sup class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</sup>. What we want to do is drawing into frames intricated recursive patterns out of a figure we will name George. We can proceed to define George straight away in the following manner</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (george rect)
+  (draw-line rect .25 0 .35 .5)
+  (draw-line rect .35 .5 .3 .6)
+  (draw-line rect .3 .6 .15 .4)
+  ; ...
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The problem with this implementation is that both the action of drawing George and the data representing George are intertwined. Besides, the representation of the elements of George are very low-level. With some data abstraction it is possible to define vectors as poitns in space and segments as lines connecting two vectors. So a better representation of George could be</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (george-lines)
+  (list
+    (make-segment p1 p2)
+    (make-segment p2 p3)
+    (make-segment p3 p4)
+    ; ...
+  )
+)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here we have defined George in terms of segments, which is a higher level of abstraction. Besides, these lines are defined with respect to some coordinate frame, but they are not being drawn yet. So the act of drawing has been separated from the representation of the data.</p>
+</div>
+<div class="paragraph">
+<p>Now comes the key problem: drawing a picture within a frame. The first idea that comes to mind could be to create a procedure to draw collections of segments. However, we would like to have the flexibility of using any frame to draw in. So, a picture could be made a procedure. This may sound weird at first, since one would normally assume it should be a data structure, but it is actually a good idea because it captures the procedural abstraction of drawing data within a frame. The procedure is going to contain the geometric entities of George, but is also going to take as input a frame, the nscale the elements to fit within the frame and finally display the results. This abstraction results in an increased flexibility in manipulating the picture structure. We are now going to define the function which implements this job.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (make-picture seglist)
+  (lambda (frame)
+    (for-each
+      (lambda (segment)
+        (let ((b (start-segment segment))
+              (e (end-segment segment)))
+          (draw-line frame
+                     (xcoord b)
+                     (ycoord b)
+                     (xcoord e)
+                     (ycoord e))))
+    seglist)))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>First of all note that <code>make-picture</code> is a higher-order procedure, since it returns another procedure. It takes as input a list of segments to be drawn, George in our case. The inner procedure takes the frame on which to draw the figure as input, making the drawing process of the figure independent of the frame in which to draw in. The body of the inner function cycles through each segment of the list of segments (George), assigns the the start vector and end vector of the segment to two local variables, then proceeds to draw inside the segment inside the frame (note the <code>draw-line</code> we had previously employed to define George). Finally, George can be defined with the following instruction:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define g (make-picture george-lines))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To wrap up, George is now both a data abstraction (<code>george-lines</code>, a list of segments) and a procedure (<code>g</code>, a procedure for drawing those lines within a frame). Also note that <code>g</code> contains the information about the segments within it as part of the procedural abstraction. This makes it easy to use George as the building block to draw other pictures and define other operations such as scaling, rotation, combinations.</p>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.4" class="bare">https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.4</a>
+</div>
+<div class="footnote" id="_footnote_2">
+<a href="#_footnoteref_2">2</a>. <a href="https://en.wikipedia.org/wiki/M._C._Escher" class="bare">https://en.wikipedia.org/wiki/M._C._Escher</a>
+</div>
+</div>
+</div>
+
+    <div id="prev-next">
+        
+        <a href="/my-blog/posts/2019-11-14-sicp-series-introductory-concepts/">&laquo; SICP series - Introductory Concepts</a>
+        
+        
+        <a class="right" href="/my-blog/posts/2019-11-14-sicp-series-mutation-and-environment-model/">SICP series - Mutation and Environment Model &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>Copyright &copy; 2019 roby-wan
+    <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/my-blog/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

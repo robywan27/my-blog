@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>roby-wan $ ramblings - SICP series - Mutation and Environment Model</title>
+    <link rel="canonical" href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-mutation-and-environment-model/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700" rel="stylesheet"
+          type="text/css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/default.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link href="/my-blog/css/screen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/my-blog/">(ramblings)</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li ><a href="/my-blog/">Home</a></li>
+            <li
+            ><a href="/my-blog/archives/">Archives</a></li>
+            <li
+            
+                
+                    
+                         class="active" 
+                         
+                     
+                 
+            ><a href="/my-blog/tags/">Tags</a></li>
+            
+            <li
+            >
+            <a href="/my-blog/pages/about/">About me</a>
+            </li>
+            
+            <li><a href="/my-blog/feed.xml">RSS</a></li>            
+        </ul>
+    </div><!--/.nav-collapse -->
+</nav>
+
+
+<div>
+    <div>
+        <div>
+            <div id="content">
+                
+<div id="post">
+    <div class="post-header">
+    <h1>SICP series - Mutation and Environment Model</h1>
+    <div class="container">
+        <div id="post-meta" class="row">
+            <div class="col-sm-2 nopadding">14 November 2019</div>
+            
+            <div id="post-tags" class="col-sm-auto">
+                <b>Tags: </b>
+                
+                <a href="/my-blog/tags/mutation/">mutation</a>
+                
+                <a href="/my-blog/tags/SICP/">SICP</a>
+                
+            </div>
+            
+        </div>    
+    </div>
+</div>
+<div id="post-body">
+    
+    <div class="paragraph">
+<p>So far in the previous posts we have dealt only with <code>functional programming</code>. According to this model, all procedures are <code>pure</code> functions, which means they can be conceptually treated as mathematical functions. A function in mathematics is simply a mapping from its input values to some output values; so a function is dependent only on the input parameters it is passed. Also, the function should return the same output any time it is given the same input values. In the programming world, this entails that procedures do not alter any existing data structures, or in other words they do not <code>mutate their state</code>. In fact, any time an operation is performed on a data structure, a new copy is returned from it. For example, the operation of adding an element to the end of the list (usually implemented by the function <em>append</em>) does not alter the given list; instead, the following steps are taken:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>a copy of the list is made</p>
+</li>
+<li>
+<p>the element is added to the end of the list</p>
+</li>
+<li>
+<p>the copy of the list is returned</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This means that the list passed as input to <em>append</em>, after being processed by this function, is unchanged, i.e. does not possess any new element. It is then possible to operate on this list assuming that nowhere throughout the course of the program it was modified. This is the reason why we say pure functions are exempt from <code>side effects</code>.</p>
+</div>
+<div class="paragraph">
+<p>The previous point, i.e. that functions limit themselves to return values rather than altering any existing data structure, shows the composability quality of functional programs. With this perspective in mind, it is possible to view programs as made of the interactions among its functions, where each function depends on the value resulting from the execution of another function; at the same time, that function can provide the input value to the next one. This model of computation is reminiscent of commands piping in Unix systems. Again, notice how the data structures in the system are left unaltered, while the functions do their computations.</p>
+</div>
+<div class="sect1">
+<h2 id="_mutation">Mutation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As good as this model may be, it however poses some limitations, so today we are going to introduce the topic of <code>mutation</code>. This concept is implemented in Scheme by mutators, which take a variable name and a value and bind that value to that name; if that variable possessed a value, this is discarded and the new value is assigned to the variable. This is done with the following instruction.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(set! x "foo")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice how this differs from <code>define</code>, in that this construct creates a new binding between a name and a value. It is however not possible to redefine this binding with another <code>define</code>; what happens is that the previous binding is discarded and a new binding is created. So <code>define</code> can only create new bindings, not alter them. Even though apparently the outcome may be the same, it is important to appreciate the subtle difference.</p>
+</div>
+<div class="paragraph">
+<p>The important effect mutation brings to the table is that it introduces <code>time</code> or <code>context</code> in our model of computation. Now, two expressions with identical syntax may be associated to different semantics as they rely on the context surrounding their evaluation. Their meaning is dependent on the time they are evaluated, which means the order in which expressions are evaluated matter. For example</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define x 10)
+(+ x 5) ; 15
+; ...
+(set! x 90)
+; ...
+(+ x 5) ; 95</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>note how in the previous excerpt the same instruction <code>(+ x 5)</code> can result in two different values depending at the point in time where it is evaluated in the program.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_environment_model">Environment Model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This shift in paradigm from functional to <code>state-based</code> requires a new evaluation model to evaluate expressions by also taking into account the effects introduced by mutation. This leads also to a shift in the viewpoint on computation. According to the new vision, the following elements can be viewed in the following manner:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>variable</p>
+<div class="ulist">
+<ul>
+<li>
+<p>OLD - name for a value</p>
+</li>
+<li>
+<p>NEW - place where it is possible to store something</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>procedure</p>
+<div class="ulist">
+<ul>
+<li>
+<p>OLD - functional description of a computational process</p>
+</li>
+<li>
+<p>NEW - object with inherited context</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>expression</p>
+<div class="ulist">
+<ul>
+<li>
+<p>NEW - only has meaning with respect to an environment</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These considerations bring us the the definition of what we will call the <code>Environment Model</code> (EM). What follows now is a description of the structure of this model.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A frame consists of a table of bindings; each binding in the table is a pairing of a name and a value.</p>
+</li>
+<li>
+<p>An environment consists of a nested sequence of frames, where a frame can be shared by multiple environments; the connection between two frames is called the <code>enclosing environment pointer</code>. All the evaluation occurs within the scope of an environment, which provides the context for how symbols and names are interpreted.</p>
+</li>
+<li>
+<p>The current environment changes when the interpreter applies a procedure.</p>
+</li>
+<li>
+<p>The top environment is called the <code>global environment</code> (GE); it is the starting point in a program and holds the bindings for all its basic expressions.</p>
+</li>
+<li>
+<p>The rule to evaluate a combination is the followign one:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>evaluate the sub-expressions in the current environment</p>
+</li>
+<li>
+<p>apply the value of the first sub-expression to the values of others</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>What follow now are rules of evaluation of EM. To have a visual depiction of the following rules I advise to consult the slides of lesson 15 which can be found here <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>name-rule</code>: a name X evaluated in environment E gives the value of X in the first frame of E where X is bound</p>
+</li>
+<li>
+<p><code>define-rule</code>: a define construct evaluated in environment E creates or replaces a binding in the first frame of E</p>
+</li>
+<li>
+<p><code>set!-rule</code>: a set! of variable X evaluated in environment E changes the binding of X in the first frame of E where X is bound</p>
+</li>
+<li>
+<p><code>lambda-rule</code>: a lambda construct evaluated in environment E creates a procedure whose environment pointer is E</p>
+</li>
+<li>
+<p><code>application</code>: this consists of four steps</p>
+<div class="ulist">
+<ul>
+<li>
+<p>create a new frame A</p>
+</li>
+<li>
+<p>make A into an environment E; A&#8217;s enclosing environment pointer goes to the same frame as the environment pointer of the procedure being applied P</p>
+</li>
+<li>
+<p>within A, bind the parameters of P to the argument values</p>
+</li>
+<li>
+<p>evaluate the body of P with E as the current environment</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Again, note the difference between <code>set!</code> and <code>define</code>. <code>set!</code> always finds an existing binding for the variable, walking up the chain of environment pointers until it finds a binding and changes it. <code>define</code> always creates a binding in the same frame, even though there was a previous binding there.</p>
+</div>
+<div class="paragraph">
+<p>Also note how the lambda-rule implements the concept commonly known in functional programming as function <code>closure</code>. In fact, a function has access to the state of the lexical scope (frame) in which it has been defined. In other words, all the variables defined in the same scope of the function (when defined) are visible inside the function itself and can be included in its body. This means that, regardless of where in the program a function is called, the function keeps the same state of those variables even though the current lexical scope may be totally different and those variables may not exist anymore. This is because, as explained in the rule above, the procedure object has its environment pointer pointing to the frame in the environment where it was evaluated at definition time.</p>
+</div>
+<div class="paragraph">
+<p>Finally, I conclude this post by pointing out that all rules in the EM are evaluation rule, while the last rule considers application of procedures. We will see in the next <a href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-metacircular-evaluator/">post</a> that the interplay between expression evaluation and function application is going to be the core of the whole evaluation process of any program.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a>. <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/lecture-notes/" class="bare">https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/lecture-notes/</a>
+</div>
+</div>
+</div>
+
+    <div id="prev-next">
+        
+        <a href="/my-blog/posts/2019-11-14-sicp-series-abstraction/">&laquo; SICP series - Procedural and Data Abstraction</a>
+        
+        
+        <a class="right" href="/my-blog/posts/2019-11-14-sicp-series-intro/">SICP series - Introduction &raquo;</a>
+        
+    </div>
+
+    
+
+
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>Copyright &copy; 2019 roby-wan
+    <p style="text-align: center;">Powered by <a href="http://cryogenweb.org">Cryogen</a></p></footer>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/my-blog/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+</body>
+</html>

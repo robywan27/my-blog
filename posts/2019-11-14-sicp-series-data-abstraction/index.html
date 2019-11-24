@@ -81,7 +81,7 @@
 <div id="post-body">
     
     <div class="paragraph">
-<p>The previous post <a href="ywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/">Procedural Abstraction</a> dealt with the idea of creating procedures to capture patterns of computation and abstracting them away by suppressing the implementation details and giving them a name so taht it is possible to treat them as primitive elements of the language. The topic of this post tackles a complementary issue to that of procedure abstraction, specifically how to group together pieces of information or data into abstract structures. Even though the problems both sides of abstraction are complementary, it will turn out that they are actually interconnected and thus the distinction among them is blurred. In fact, the procedures to manipulate the elements of a data structure usually have an inherent structure that mimics the data structure. This is just a teaser, but I will come back on this more in detail later.</p>
+<p>The previous post <a href="robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/">Procedural Abstraction</a> dealt with the idea of creating procedures to capture patterns of computation and abstracting them away by suppressing the implementation details and giving them a name so taht it is possible to treat them as primitive elements of the language. The topic of this post tackles a complementary issue to that of procedure abstraction, specifically how to group together pieces of information or data into abstract structures. Even though the problems both sides of abstraction are complementary, it will turn out that they are actually interconnected and thus the distinction among them is blurred. In fact, the procedures to manipulate the elements of a data structure usually have an inherent structure that mimics the data structure. This is just a teaser, but I will come back on this more in detail later.</p>
 </div>
 <div class="sect1">
 <h2 id="_compound_data">Compound Data</h2>
@@ -95,7 +95,7 @@
 <div class="sect2">
 <h3 id="_pairs">Pairs</h3>
 <div class="paragraph">
-<p>Scheme provides a basic construct to glue things together, <code>cons</code> (constructor). <code>cons</code> is a procedure which takes two expressions as input, evaluates them and glues those values together to form a <code>pair</code>. In order to get those elements back from the pair Scheme provides the procedures <code>car</code> and <code>cdr</code> which return the first and second element respectively. We have defined a <code>contract</code>.</p>
+<p>Scheme provides a basic construct to glue things together, <code>cons</code> (constructor). <code>cons</code> is a procedure which takes two expressions as input, evaluates them and glues those values together to form a <code>pair</code>. In order to get those elements back from the pair Scheme provides the procedures <code>car</code> and <code>cdr</code> which return the first and second element respectively. Furthermore, the contract can be extended to include <code>operations</code> such as <code>predicates</code> to check if a given data structure satisfies the contract or not. So the <code>contract</code> may look like this.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -105,9 +105,6 @@
 (pred? &lt;x&gt;)                     ; predicate
   ==&gt; #t if pred? evaluates to a pair, else #f</code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Furthermore, the contract can be extended to include <code>predicates</code> to check if a given data structure satisfies the contract or not.</p>
 </div>
 <div class="paragraph">
 <p>To portrait an implementation of a contract, the most basic example we could think is that of a 2-D point.</p>
@@ -143,15 +140,95 @@
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>Note that lists are closed under the operations of <code>cons</code>, <code>car</code> and <code>cdr</code>, and can thus be treated as primitives.</p>
-</div>
 <div class="imageblock text-center">
 <div class="content">
 <img src="../../img/scheme-lists.png" alt="Scheme Lists">
 </div>
 <div class="title">Figure 1. Lists in Scheme</div>
 </div>
+<div class="paragraph">
+<p>Note that lists are closed under the operations of <code>cons</code>, <code>car</code> and <code>cdr</code>, and can thus be treated as primitives.</p>
+</div>
+<div class="paragraph">
+<p>Several procedures can be written to define operations on lists; one thing they share is their recursive structure which mimics the recursive structure of the data object.
+For example, consider the <code>append</code> operation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (append l1 l2)
+  (if (null? l1)
+    l2
+    (adjoin (first l1)
+      (append (rest l1) l2))))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where <code>adjoin</code>, <code>first</code> and <code>rest</code> are defined in terms of <code>cons</code>, <code>car</code> and <code>cdr</code> for lists:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define adjoin cons)
+(define first car)
+(define rest cdr)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_take_home">Take-home</h3>
+<div class="paragraph">
+<p>As seen with pairs and lists, it is possible to build systems which rely on layers of abstractions barriers, creating a sort of hierarchy of data abstractions. For example, lists are composed of pairs and groups could be defined in terms of lists. regardless of the level, the user to use only those operations exposed for a given level of abstraction without messing with the procedures of the implementation of that structure. This leads to the benefit that the user is shielded by the implementation details of the underlying representation of a given structure. Which means that alternative implementations could be provided without the user ever noticing it, provided that the contract is respected.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract_data_types">Abstract Data Types</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In Scheme it is possible to create tagged data structures by combining <code>symbols</code> (tags) with data structures. Symbols are data objects which, when evaluated, refer to the name itself rather than the value associated to it. Mixing tags with data structures leads to two major benefits:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>data-directed programming</code> - functions that select the right operations based on the arguments</p>
+</li>
+<li>
+<p><code>defensive programming</code> - functions that fail gracefully if given bad arguments</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Procedures following the data-directed programming approach first check the tag of a data object to choose the right sub-procedure designed specifically to to handle data of that given type. This leads to more modular systems, as procedures can be decomposed in specialized sub-components rather than having to deal with any possible type by themselves. With defensive programming procedures check the type of the arguments and produce an error message in case of an unexpected data object has been passed.</p>
+</div>
+<div class="paragraph">
+<p>With these concepts in mind it is then possible to define <code>abstract data types</code> (ADTs). An example could be an ADT for sums. Some of the procedures which could be defined for implementing it could be for example sake.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (make-sum addend augend)
+  (list '+ addend augend'))
+(define (sum-exp? e)
+  (and (pair? e) (eq? (car e) '+')))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first procedure defines a tagged-data structure <code>make-sum</code> prefixed by the symbol <code>+</code>. The second procedure exploits defensive programming as it first checks the argument to see if it is a pair. In case it is not, then it just returns false. If it is a pair, it proceeds to check whether the first element of the list is the symbol <code>+</code>.
+We could implement a simple evaluator function like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>(define (eval e)
+  (cond
+    ((number? e) e)
+    ((sum-exp? e)
+      (+ (eval (sum-addend e))
+         (eval (sum-augend e))))
+    (else
+      (error "unknow expression " e))))</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this excerpt we have exploited data-directed programming to check the expressions types looking for the primitive types first. If the expression is not a number, we resort to defensive programming to check if the expression is a sum.</p>
 </div>
 </div>
 </div>

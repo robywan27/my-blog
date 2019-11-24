@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><atom:link href="https://robywan27.github.io" rel="self" type="application/rss+xml"/><title>roby-wan $ ramblings</title><link>https://robywan27.github.io</link><description>Personal blogging site about topics in the landscape of programming languages, software development, computer science</description><lastBuildDate>Thu, 21 Nov 2019 14:57:54 +0100</lastBuildDate><generator>clj-rss</generator><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-20-best-programming-language-to-start-off/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-20-best-programming-language-to-start-off/</link><title>Best programming language to start off?</title><description>&lt;div class="paragraph"&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><atom:link href="https://robywan27.github.io" rel="self" type="application/rss+xml"/><title>roby-wan $ ramblings</title><link>https://robywan27.github.io</link><description>Personal blogging site about topics in the landscape of programming languages, software development, computer science</description><lastBuildDate>Sun, 24 Nov 2019 17:56:40 +0100</lastBuildDate><generator>clj-rss</generator><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-20-best-programming-language-to-start-off/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-20-best-programming-language-to-start-off/</link><title>Best programming language to start off?</title><description>&lt;div class="paragraph"&gt;
 &lt;p&gt;I start off by saying it depends to make things clear. It depends on the prospective you have about what you are going to us programming for. Some factors to consider are for example:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="ulist"&gt;
@@ -219,7 +219,7 @@ Another online course I found useful is the &lt;strong&gt;Functional Programming
 &lt;a href="#_footnoteref_2"&gt;2&lt;/a&gt;. &lt;a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/1a-overview-and-introduction-to-lisp/" class="bare"&gt;https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/video-lectures/1a-overview-and-introduction-to-lisp/&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-data-abstraction/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-data-abstraction/</link><title>SICP series - Data Abstraction</title><description>&lt;div class="paragraph"&gt;
-&lt;p&gt;The previous post &lt;a href="ywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/"&gt;Procedural Abstraction&lt;/a&gt; dealt with the idea of creating procedures to capture patterns of computation and abstracting them away by suppressing the implementation details and giving them a name so taht it is possible to treat them as primitive elements of the language. The topic of this post tackles a complementary issue to that of procedure abstraction, specifically how to group together pieces of information or data into abstract structures. Even though the problems both sides of abstraction are complementary, it will turn out that they are actually interconnected and thus the distinction among them is blurred. In fact, the procedures to manipulate the elements of a data structure usually have an inherent structure that mimics the data structure. This is just a teaser, but I will come back on this more in detail later.&lt;/p&gt;
+&lt;p&gt;The previous post &lt;a href="robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/"&gt;Procedural Abstraction&lt;/a&gt; dealt with the idea of creating procedures to capture patterns of computation and abstracting them away by suppressing the implementation details and giving them a name so taht it is possible to treat them as primitive elements of the language. The topic of this post tackles a complementary issue to that of procedure abstraction, specifically how to group together pieces of information or data into abstract structures. Even though the problems both sides of abstraction are complementary, it will turn out that they are actually interconnected and thus the distinction among them is blurred. In fact, the procedures to manipulate the elements of a data structure usually have an inherent structure that mimics the data structure. This is just a teaser, but I will come back on this more in detail later.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="sect1"&gt;
 &lt;h2 id="_compound_data"&gt;Compound Data&lt;/h2&gt;
@@ -233,7 +233,7 @@ Another online course I found useful is the &lt;strong&gt;Functional Programming
 &lt;div class="sect2"&gt;
 &lt;h3 id="_pairs"&gt;Pairs&lt;/h3&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;Scheme provides a basic construct to glue things together, &lt;code&gt;cons&lt;/code&gt; (constructor). &lt;code&gt;cons&lt;/code&gt; is a procedure which takes two expressions as input, evaluates them and glues those values together to form a &lt;code&gt;pair&lt;/code&gt;. In order to get those elements back from the pair Scheme provides the procedures &lt;code&gt;car&lt;/code&gt; and &lt;code&gt;cdr&lt;/code&gt; which return the first and second element respectively. We have defined a &lt;code&gt;contract&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Scheme provides a basic construct to glue things together, &lt;code&gt;cons&lt;/code&gt; (constructor). &lt;code&gt;cons&lt;/code&gt; is a procedure which takes two expressions as input, evaluates them and glues those values together to form a &lt;code&gt;pair&lt;/code&gt;. In order to get those elements back from the pair Scheme provides the procedures &lt;code&gt;car&lt;/code&gt; and &lt;code&gt;cdr&lt;/code&gt; which return the first and second element respectively. Furthermore, the contract can be extended to include &lt;code&gt;operations&lt;/code&gt; such as &lt;code&gt;predicates&lt;/code&gt; to check if a given data structure satisfies the contract or not. So the &lt;code&gt;contract&lt;/code&gt; may look like this.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="listingblock"&gt;
 &lt;div class="content"&gt;
@@ -243,9 +243,6 @@ Another online course I found useful is the &lt;strong&gt;Functional Programming
 (pred? &amp;lt;x&amp;gt;)                     ; predicate
   ==&amp;gt; #t if pred? evaluates to a pair, else #f&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Furthermore, the contract can be extended to include &lt;code&gt;predicates&lt;/code&gt; to check if a given data structure satisfies the contract or not.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;To portrait an implementation of a contract, the most basic example we could think is that of a 2-D point.&lt;/p&gt;
@@ -281,15 +278,95 @@ Another online course I found useful is the &lt;strong&gt;Functional Programming
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div class="paragraph"&gt;
-&lt;p&gt;Note that lists are closed under the operations of &lt;code&gt;cons&lt;/code&gt;, &lt;code&gt;car&lt;/code&gt; and &lt;code&gt;cdr&lt;/code&gt;, and can thus be treated as primitives.&lt;/p&gt;
-&lt;/div&gt;
 &lt;div class="imageblock text-center"&gt;
 &lt;div class="content"&gt;
 &lt;img src="../../img/scheme-lists.png" alt="Scheme Lists"&gt;
 &lt;/div&gt;
 &lt;div class="title"&gt;Figure 1. Lists in Scheme&lt;/div&gt;
 &lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Note that lists are closed under the operations of &lt;code&gt;cons&lt;/code&gt;, &lt;code&gt;car&lt;/code&gt; and &lt;code&gt;cdr&lt;/code&gt;, and can thus be treated as primitives.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Several procedures can be written to define operations on lists; one thing they share is their recursive structure which mimics the recursive structure of the data object.
+For example, consider the &lt;code&gt;append&lt;/code&gt; operation:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(define (append l1 l2)
+  (if (null? l1)
+    l2
+    (adjoin (first l1)
+      (append (rest l1) l2))))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;where &lt;code&gt;adjoin&lt;/code&gt;, &lt;code&gt;first&lt;/code&gt; and &lt;code&gt;rest&lt;/code&gt; are defined in terms of &lt;code&gt;cons&lt;/code&gt;, &lt;code&gt;car&lt;/code&gt; and &lt;code&gt;cdr&lt;/code&gt; for lists:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(define adjoin cons)
+(define first car)
+(define rest cdr)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_take_home"&gt;Take-home&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As seen with pairs and lists, it is possible to build systems which rely on layers of abstractions barriers, creating a sort of hierarchy of data abstractions. For example, lists are composed of pairs and groups could be defined in terms of lists. regardless of the level, the user to use only those operations exposed for a given level of abstraction without messing with the procedures of the implementation of that structure. This leads to the benefit that the user is shielded by the implementation details of the underlying representation of a given structure. Which means that alternative implementations could be provided without the user ever noticing it, provided that the contract is respected.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_abstract_data_types"&gt;Abstract Data Types&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In Scheme it is possible to create tagged data structures by combining &lt;code&gt;symbols&lt;/code&gt; (tags) with data structures. Symbols are data objects which, when evaluated, refer to the name itself rather than the value associated to it. Mixing tags with data structures leads to two major benefits:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;data-directed programming&lt;/code&gt; - functions that select the right operations based on the arguments&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;defensive programming&lt;/code&gt; - functions that fail gracefully if given bad arguments&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Procedures following the data-directed programming approach first check the tag of a data object to choose the right sub-procedure designed specifically to to handle data of that given type. This leads to more modular systems, as procedures can be decomposed in specialized sub-components rather than having to deal with any possible type by themselves. With defensive programming procedures check the type of the arguments and produce an error message in case of an unexpected data object has been passed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;With these concepts in mind it is then possible to define &lt;code&gt;abstract data types&lt;/code&gt; (ADTs). An example could be an ADT for sums. Some of the procedures which could be defined for implementing it could be for example sake.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(define (make-sum addend augend)
+  (list '+ addend augend'))
+(define (sum-exp? e)
+  (and (pair? e) (eq? (car e) '+')))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The first procedure defines a tagged-data structure &lt;code&gt;make-sum&lt;/code&gt; prefixed by the symbol &lt;code&gt;+&lt;/code&gt;. The second procedure exploits defensive programming as it first checks the argument to see if it is a pair. In case it is not, then it just returns false. If it is a pair, it proceeds to check whether the first element of the list is the symbol &lt;code&gt;+&lt;/code&gt;.
+We could implement a simple evaluator function like this&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(define (eval e)
+  (cond
+    ((number? e) e)
+    ((sum-exp? e)
+      (+ (eval (sum-addend e))
+         (eval (sum-augend e))))
+    (else
+      (error "unknow expression " e))))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In this excerpt we have exploited data-directed programming to check the expressions types looking for the primitive types first. If the expression is not a number, we resort to defensive programming to check if the expression is a sum.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/</link><title>SICP series - Procedural Abstraction</title><description>&lt;div class="paragraph"&gt;
@@ -513,17 +590,95 @@ A possible shape for the iterative factorial algorithm is the following one&lt;/
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-metacircular-evaluator/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-metacircular-evaluator/</link><title>SICP series - Metacircular Evaluator</title><description>&lt;div class="paragraph"&gt;
-&lt;p&gt;This post is going to touch the central topic of the book &lt;code&gt;Structure and Interpretation of Computer Programs&lt;/code&gt; &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote."&gt;1&lt;/a&gt;]&lt;/sup&gt;: the &lt;code&gt;Metacircular Evaluator&lt;/code&gt;. Before starting I want to include this funny clip taken from the lecture given by Prof. Gerald Sussman&lt;/p&gt;
+&lt;p&gt;So far in this series we have seen that abstractions allow to hide details and create modules to model complex systems. Abstraction can be obtained by building procedures which capture patterns of computation and data structures made out of simpler components. Although they tackle complementary issues, the distinction between both kinds of abstraction are blurred and share a common structure. In the previous &lt;a href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-mutation-and-environment-model/"&gt;post&lt;/a&gt; we have drawn a comparison between the functional approach and a state-based one characterized by side effects. We have then formulated the environment model as model of evaluation to take into account mutation. Building on this last concept, we are going to delve into the central topic of the book: &lt;code&gt;meta-linguistic abstractions&lt;/code&gt;. This topic deals both with the definition of a new language and with the process of evaluation of a program. This is the ultimate step in the process of abstraction, as it allows not only to combine and abstract over the primitive elements of a language, but to define new languages which introduce different primitives and consequently new ways of combination and abstraction tailor-suited to different kinds of problems.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_interpreter"&gt;Interpreter&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;In order to deduce the meaning associated to the expressions in a language, we need to define a set of procedures which compose what we call an &lt;code&gt;interpreter&lt;/code&gt; or evaluator. An interpreter is then a program which is able to unwind the means of abstraction in a language and reduce them into means of combination or primitives of the language. It specifies what it means to evaluate expressions in this language, so it defines what is legal syntax or legal semantics.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_structure_of_an_interpreter"&gt;Structure of an interpreter&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;An interpreter is composed of a series of components.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Lexical analyzer&lt;/code&gt;: maps a string of characters to a sequence of words (tokens).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Parser&lt;/code&gt;: parses the sequence of words into a defined structure useful for the subsequent phase. An example of representation is a tree structure made up of pairs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Evaluator&lt;/code&gt;: works hand-in-hand with an environment, a sort of dictionary associating names to values. The evaluator employs a set of rules to reduce complex expressions to simpler elements until a simple value is returned.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Printer&lt;/code&gt;: converts the returned value in the appropriate form (e.g. a string) and displays it to the user.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It is possible to exploit Scheme to take care of some of the steps of the interpretation process to avoid to build them from scratch. So we will focus only on the &lt;code&gt;evaluator&lt;/code&gt;, the core of the evaluation process. This means that we will need to build a language resembling Scheme in that it should have a tree structure as the output of the parser and a set of rules for manipulating that tree structure.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_eval_apply"&gt;Eval-Apply&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The evaluator is composed of several functions to evaluate different elements of the language, and a function to apply procedures on the evaluated arguments. It is the interplay of this &lt;code&gt;eval-apply&lt;/code&gt; cycle that makes up the core of the process of evaluation:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="quoteblock"&gt;
+&lt;blockquote&gt;
+The &lt;em&gt;evaluation&lt;/em&gt; of an expression with respect to an environment reduces to an &lt;em&gt;application&lt;/em&gt; of a procedure to a set of arguments. This in turn reduces to the &lt;em&gt;evaluation&lt;/em&gt; of a simpler expression, the body of the procedure, with respect to a new environment (one in which the formal parameters of the procedure have been bound to the arguments passed in). The loop continues unwinding expressions until it reaches the &lt;em&gt;application&lt;/em&gt; of a primitive procedure to primitive values or the &lt;em&gt;evaluation&lt;/em&gt; of a primitive data object.
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class="imageblock text-center"&gt;
+&lt;div class="content"&gt;
+&lt;img src="../../img/eval-apply-cycle.png" alt="eval-apply cycle"&gt;
+&lt;/div&gt;
+&lt;div class="title"&gt;Figure 1. eval-apply cycle&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Note that it is important to exploit data abstraction to define the elements on which the evaluation procedures work in order to separate the syntax of the language from its semantics. This is useful as it allows to change the syntax of the language without having to change the evaluator, i.e. the semantics. So for example to implement the syntactic change to function calls it is necessary to just change the procedures dealing with the syntax, i.e. those walking the tree structure and pulling out the pieces.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect2"&gt;
+&lt;h3 id="_metacircular_evaluator"&gt;Metacircular Evaluator&lt;/h3&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;We have talked so far how it is possible to create languages within Scheme by defining an evaluator which defines some procedures to implement the &lt;em&gt;eval-apply&lt;/em&gt; cycle. For example, it is possible to define a language for processing arithmetic expressions which resembles Scheme. However, this is not all. In fact, it is actually possible to write the actual Scheme evaluator with Scheme itself! This is what has been named by the authors of the book as &lt;code&gt;metacircular evaluator&lt;/code&gt;, since writing the interpreter in a language is equivalent to defining the language itself.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To build a complete evaluator of Scheme, it is necessary to define the procedures to implement the following elements of the language:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;semantics - the core evaluator composed of the eval-apply procedures&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;syntax - procedures detailling how to write legal expressions in the language&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;environment manipulation - procedures that implement the Environment Model defined in the previous post&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;primitive procedures and initial global environment&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;read-eval-print loop (REPL) to interact with the evaluator&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;I close this post by including this funny clip taken from the lecture given by Prof. Gerald Sussman.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="videoblock"&gt;
 &lt;div class="content"&gt;
 &lt;iframe width="660" height="402" src="https://www.youtube.com/embed/Ow9AtuIuMLw?rel=0" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div id="footnotes"&gt;
-&lt;hr&gt;
-&lt;div class="footnote" id="_footnote_1"&gt;
-&lt;a href="#_footnoteref_1"&gt;1&lt;/a&gt;. &lt;a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html" class="bare"&gt;https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html&lt;/a&gt;
+&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-introductory-concepts/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-introductory-concepts/</link><title>SICP series - Introductory Concepts</title><description>&lt;div class="paragraph"&gt;
 &lt;p&gt;This post is going to illustrate some of the introductory concepts presented in the book &lt;code&gt;Structure and Interpretation of Computer Programs&lt;/code&gt; &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote."&gt;1&lt;/a&gt;]&lt;/sup&gt;.&lt;/p&gt;
@@ -635,6 +790,264 @@ Example: (define total (- 100 30))&lt;/p&gt;
 &lt;hr&gt;
 &lt;div class="footnote" id="_footnote_1"&gt;
 &lt;a href="#_footnoteref_1"&gt;1&lt;/a&gt;. &lt;a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html" class="bare"&gt;https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-abstraction/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-abstraction/</link><title>SICP series - Procedural and Data Abstraction</title><description>&lt;div class="paragraph"&gt;
+&lt;p&gt;The purpose of this post is to provide an example on how &lt;a href="robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-procedural-abstraction/"&gt;procedural&lt;/a&gt; and &lt;a href="robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-data-abstraction/"&gt;data&lt;/a&gt; abstractions can be exploited and combined together to build modular systems. At the end of this article you should be convinced that there is actually not a clear distinction between the two types of abstractions, rather they are two sides of the same coin. I am going to outline only the most important points on the picture language defined in the book &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote."&gt;1&lt;/a&gt;]&lt;/sup&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;It is possible to build domain specific languages in Scheme for describing and solving the domain problem. Since the language is embedded within Scheme, it inherits the power of Scheme. The topic of the current post is to build a language to draw pictures in the style of Escher &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote."&gt;2&lt;/a&gt;]&lt;/sup&gt;. What we want to do is drawing into frames intricated recursive patterns out of a figure we will name George. We can proceed to define George straight away in the following manner&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(define (george rect)
+  (draw-line rect .25 0 .35 .5)
+  (draw-line rect .35 .5 .3 .6)
+  (draw-line rect .3 .6 .15 .4)
+  ; ...
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The problem with this implementation is that both the action of drawing George and the data representing George are intertwined. Besides, the representation of the elements of George are very low-level. With some data abstraction it is possible to define vectors as poitns in space and segments as lines connecting two vectors. So a better representation of George could be&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(define (george-lines)
+  (list
+    (make-segment p1 p2)
+    (make-segment p2 p3)
+    (make-segment p3 p4)
+    ; ...
+  )
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Here we have defined George in terms of segments, which is a higher level of abstraction. Besides, these lines are defined with respect to some coordinate frame, but they are not being drawn yet. So the act of drawing has been separated from the representation of the data.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Now comes the key problem: drawing a picture within a frame. The first idea that comes to mind could be to create a procedure to draw collections of segments. However, we would like to have the flexibility of using any frame to draw in. So, a picture could be made a procedure. This may sound weird at first, since one would normally assume it should be a data structure, but it is actually a good idea because it captures the procedural abstraction of drawing data within a frame. The procedure is going to contain the geometric entities of George, but is also going to take as input a frame, the nscale the elements to fit within the frame and finally display the results. This abstraction results in an increased flexibility in manipulating the picture structure. We are now going to define the function which implements this job.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(define (make-picture seglist)
+  (lambda (frame)
+    (for-each
+      (lambda (segment)
+        (let ((b (start-segment segment))
+              (e (end-segment segment)))
+          (draw-line frame
+                     (xcoord b)
+                     (ycoord b)
+                     (xcoord e)
+                     (ycoord e))))
+    seglist)))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;First of all note that &lt;code&gt;make-picture&lt;/code&gt; is a higher-order procedure, since it returns another procedure. It takes as input a list of segments to be drawn, George in our case. The inner procedure takes the frame on which to draw the figure as input, making the drawing process of the figure independent of the frame in which to draw in. The body of the inner function cycles through each segment of the list of segments (George), assigns the the start vector and end vector of the segment to two local variables, then proceeds to draw inside the segment inside the frame (note the &lt;code&gt;draw-line&lt;/code&gt; we had previously employed to define George). Finally, George can be defined with the following instruction:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(define g (make-picture george-lines))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;To wrap up, George is now both a data abstraction (&lt;code&gt;george-lines&lt;/code&gt;, a list of segments) and a procedure (&lt;code&gt;g&lt;/code&gt;, a procedure for drawing those lines within a frame). Also note that &lt;code&gt;g&lt;/code&gt; contains the information about the segments within it as part of the procedural abstraction. This makes it easy to use George as the building block to draw other pictures and define other operations such as scaling, rotation, combinations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id="footnotes"&gt;
+&lt;hr&gt;
+&lt;div class="footnote" id="_footnote_1"&gt;
+&lt;a href="#_footnoteref_1"&gt;1&lt;/a&gt;. &lt;a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.4" class="bare"&gt;https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-15.html#%_sec_2.2.4&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="footnote" id="_footnote_2"&gt;
+&lt;a href="#_footnoteref_2"&gt;2&lt;/a&gt;. &lt;a href="https://en.wikipedia.org/wiki/M._C._Escher" class="bare"&gt;https://en.wikipedia.org/wiki/M._C._Escher&lt;/a&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-mutation-and-environment-model/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-mutation-and-environment-model/</link><title>SICP series - Mutation and Environment Model</title><description>&lt;div class="paragraph"&gt;
+&lt;p&gt;So far in the previous posts we have dealt only with &lt;code&gt;functional programming&lt;/code&gt;. According to this model, all procedures are &lt;code&gt;pure&lt;/code&gt; functions, which means they can be conceptually treated as mathematical functions. A function in mathematics is simply a mapping from its input values to some output values; so a function is dependent only on the input parameters it is passed. Also, the function should return the same output any time it is given the same input values. In the programming world, this entails that procedures do not alter any existing data structures, or in other words they do not &lt;code&gt;mutate their state&lt;/code&gt;. In fact, any time an operation is performed on a data structure, a new copy is returned from it. For example, the operation of adding an element to the end of the list (usually implemented by the function &lt;em&gt;append&lt;/em&gt;) does not alter the given list; instead, the following steps are taken:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;a copy of the list is made&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the element is added to the end of the list&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the copy of the list is returned&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This means that the list passed as input to &lt;em&gt;append&lt;/em&gt;, after being processed by this function, is unchanged, i.e. does not possess any new element. It is then possible to operate on this list assuming that nowhere throughout the course of the program it was modified. This is the reason why we say pure functions are exempt from &lt;code&gt;side effects&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The previous point, i.e. that functions limit themselves to return values rather than altering any existing data structure, shows the composability quality of functional programs. With this perspective in mind, it is possible to view programs as made of the interactions among its functions, where each function depends on the value resulting from the execution of another function; at the same time, that function can provide the input value to the next one. This model of computation is reminiscent of commands piping in Unix systems. Again, notice how the data structures in the system are left unaltered, while the functions do their computations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_mutation"&gt;Mutation&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;As good as this model may be, it however poses some limitations, so today we are going to introduce the topic of &lt;code&gt;mutation&lt;/code&gt;. This concept is implemented in Scheme by mutators, which take a variable name and a value and bind that value to that name; if that variable possessed a value, this is discarded and the new value is assigned to the variable. This is done with the following instruction.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(set! x "foo")&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Notice how this differs from &lt;code&gt;define&lt;/code&gt;, in that this construct creates a new binding between a name and a value. It is however not possible to redefine this binding with another &lt;code&gt;define&lt;/code&gt;; what happens is that the previous binding is discarded and a new binding is created. So &lt;code&gt;define&lt;/code&gt; can only create new bindings, not alter them. Even though apparently the outcome may be the same, it is important to appreciate the subtle difference.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;The important effect mutation brings to the table is that it introduces &lt;code&gt;time&lt;/code&gt; or &lt;code&gt;context&lt;/code&gt; in our model of computation. Now, two expressions with identical syntax may be associated to different semantics as they rely on the context surrounding their evaluation. Their meaning is dependent on the time they are evaluated, which means the order in which expressions are evaluated matter. For example&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="listingblock"&gt;
+&lt;div class="content"&gt;
+&lt;pre class="highlight"&gt;&lt;code&gt;(define x 10)
+(+ x 5) ; 15
+; ...
+(set! x 90)
+; ...
+(+ x 5) ; 95&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;note how in the previous excerpt the same instruction &lt;code&gt;(+ x 5)&lt;/code&gt; can result in two different values depending at the point in time where it is evaluated in the program.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;
+&lt;h2 id="_environment_model"&gt;Environment Model&lt;/h2&gt;
+&lt;div class="sectionbody"&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;This shift in paradigm from functional to &lt;code&gt;state-based&lt;/code&gt; requires a new evaluation model to evaluate expressions by also taking into account the effects introduced by mutation. This leads also to a shift in the viewpoint on computation. According to the new vision, the following elements can be viewed in the following manner:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;variable&lt;/p&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;OLD - name for a value&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NEW - place where it is possible to store something&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;procedure&lt;/p&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;OLD - functional description of a computational process&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NEW - object with inherited context&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;expression&lt;/p&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;NEW - only has meaning with respect to an environment&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;These considerations bring us the the definition of what we will call the &lt;code&gt;Environment Model&lt;/code&gt; (EM). What follows now is a description of the structure of this model.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A frame consists of a table of bindings; each binding in the table is a pairing of a name and a value.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An environment consists of a nested sequence of frames, where a frame can be shared by multiple environments; the connection between two frames is called the &lt;code&gt;enclosing environment pointer&lt;/code&gt;. All the evaluation occurs within the scope of an environment, which provides the context for how symbols and names are interpreted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The current environment changes when the interpreter applies a procedure.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The top environment is called the &lt;code&gt;global environment&lt;/code&gt; (GE); it is the starting point in a program and holds the bindings for all its basic expressions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The rule to evaluate a combination is the followign one:&lt;/p&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;evaluate the sub-expressions in the current environment&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;apply the value of the first sub-expression to the values of others&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;What follow now are rules of evaluation of EM. To have a visual depiction of the following rules I advise to consult the slides of lesson 15 which can be found here &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote."&gt;1&lt;/a&gt;]&lt;/sup&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;name-rule&lt;/code&gt;: a name X evaluated in environment E gives the value of X in the first frame of E where X is bound&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;define-rule&lt;/code&gt;: a define construct evaluated in environment E creates or replaces a binding in the first frame of E&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;set!-rule&lt;/code&gt;: a set! of variable X evaluated in environment E changes the binding of X in the first frame of E where X is bound&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;lambda-rule&lt;/code&gt;: a lambda construct evaluated in environment E creates a procedure whose environment pointer is E&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;application&lt;/code&gt;: this consists of four steps&lt;/p&gt;
+&lt;div class="ulist"&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;create a new frame A&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;make A into an environment E; A&amp;#8217;s enclosing environment pointer goes to the same frame as the environment pointer of the procedure being applied P&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;within A, bind the parameters of P to the argument values&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;evaluate the body of P with E as the current environment&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Again, note the difference between &lt;code&gt;set!&lt;/code&gt; and &lt;code&gt;define&lt;/code&gt;. &lt;code&gt;set!&lt;/code&gt; always finds an existing binding for the variable, walking up the chain of environment pointers until it finds a binding and changes it. &lt;code&gt;define&lt;/code&gt; always creates a binding in the same frame, even though there was a previous binding there.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Also note how the lambda-rule implements the concept commonly known in functional programming as function &lt;code&gt;closure&lt;/code&gt;. In fact, a function has access to the state of the lexical scope (frame) in which it has been defined. In other words, all the variables defined in the same scope of the function (when defined) are visible inside the function itself and can be included in its body. This means that, regardless of where in the program a function is called, the function keeps the same state of those variables even though the current lexical scope may be totally different and those variables may not exist anymore. This is because, as explained in the rule above, the procedure object has its environment pointer pointing to the frame in the environment where it was evaluated at definition time.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="paragraph"&gt;
+&lt;p&gt;Finally, I conclude this post by pointing out that all rules in the EM are evaluation rule, while the last rule considers application of procedures. We will see in the next &lt;a href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-metacircular-evaluator/"&gt;post&lt;/a&gt; that the interplay between expression evaluation and function application is going to be the core of the whole evaluation process of any program.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="footnotes"&gt;
+&lt;hr&gt;
+&lt;div class="footnote" id="_footnote_1"&gt;
+&lt;a href="#_footnoteref_1"&gt;1&lt;/a&gt;. &lt;a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/lecture-notes/" class="bare"&gt;https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-001-structure-and-interpretation-of-computer-programs-spring-2005/lecture-notes/&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-intro/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-intro/</link><title>SICP series - Introduction</title><description>&lt;div class="paragraph"&gt;
 &lt;p&gt;With this post I am going to start a series of posts concerning what I believe (and not only me) to be one of the most valuable resources on programming and more in general computer science: the mythical &lt;strong&gt;Structure and Interpretation of Computer Programs&lt;/strong&gt;. The full content of the book is available online at the link &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote."&gt;1&lt;/a&gt;]&lt;/sup&gt;; I also warmly advise to have a look at the MIT courseware which offers valuable resources which aid the understanding of the book; I recommend in particular the videos (which can be found here &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote."&gt;2&lt;/a&gt;]&lt;/sup&gt;) as both Sussman and Abelson, the authors of the book, are phenomenal teachers. The lecture notes are also useful and can be found here &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_3" class="footnote" href="#_footnote_3" title="View footnote."&gt;3&lt;/a&gt;]&lt;/sup&gt;.&lt;/p&gt;

@@ -79,17 +79,95 @@
 <div id="post-body">
     
     <div class="paragraph">
-<p>This post is going to touch the central topic of the book <code>Structure and Interpretation of Computer Programs</code> <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>: the <code>Metacircular Evaluator</code>. Before starting I want to include this funny clip taken from the lecture given by Prof. Gerald Sussman</p>
+<p>So far in this series we have seen that abstractions allow to hide details and create modules to model complex systems. Abstraction can be obtained by building procedures which capture patterns of computation and data structures made out of simpler components. Although they tackle complementary issues, the distinction between both kinds of abstraction are blurred and share a common structure. In the previous <a href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-mutation-and-environment-model/">post</a> we have drawn a comparison between the functional approach and a state-based one characterized by side effects. We have then formulated the environment model as model of evaluation to take into account mutation. Building on this last concept, we are going to delve into the central topic of the book: <code>meta-linguistic abstractions</code>. This topic deals both with the definition of a new language and with the process of evaluation of a program. This is the ultimate step in the process of abstraction, as it allows not only to combine and abstract over the primitive elements of a language, but to define new languages which introduce different primitives and consequently new ways of combination and abstraction tailor-suited to different kinds of problems.</p>
+</div>
+<div class="sect1">
+<h2 id="_interpreter">Interpreter</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to deduce the meaning associated to the expressions in a language, we need to define a set of procedures which compose what we call an <code>interpreter</code> or evaluator. An interpreter is then a program which is able to unwind the means of abstraction in a language and reduce them into means of combination or primitives of the language. It specifies what it means to evaluate expressions in this language, so it defines what is legal syntax or legal semantics.</p>
+</div>
+<div class="sect2">
+<h3 id="_structure_of_an_interpreter">Structure of an interpreter</h3>
+<div class="paragraph">
+<p>An interpreter is composed of a series of components.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Lexical analyzer</code>: maps a string of characters to a sequence of words (tokens).</p>
+</li>
+<li>
+<p><code>Parser</code>: parses the sequence of words into a defined structure useful for the subsequent phase. An example of representation is a tree structure made up of pairs.</p>
+</li>
+<li>
+<p><code>Evaluator</code>: works hand-in-hand with an environment, a sort of dictionary associating names to values. The evaluator employs a set of rules to reduce complex expressions to simpler elements until a simple value is returned.</p>
+</li>
+<li>
+<p><code>Printer</code>: converts the returned value in the appropriate form (e.g. a string) and displays it to the user.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is possible to exploit Scheme to take care of some of the steps of the interpretation process to avoid to build them from scratch. So we will focus only on the <code>evaluator</code>, the core of the evaluation process. This means that we will need to build a language resembling Scheme in that it should have a tree structure as the output of the parser and a set of rules for manipulating that tree structure.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_eval_apply">Eval-Apply</h3>
+<div class="paragraph">
+<p>The evaluator is composed of several functions to evaluate different elements of the language, and a function to apply procedures on the evaluated arguments. It is the interplay of this <code>eval-apply</code> cycle that makes up the core of the process of evaluation:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+The <em>evaluation</em> of an expression with respect to an environment reduces to an <em>application</em> of a procedure to a set of arguments. This in turn reduces to the <em>evaluation</em> of a simpler expression, the body of the procedure, with respect to a new environment (one in which the formal parameters of the procedure have been bound to the arguments passed in). The loop continues unwinding expressions until it reaches the <em>application</em> of a primitive procedure to primitive values or the <em>evaluation</em> of a primitive data object.
+</blockquote>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="../../img/eval-apply-cycle.png" alt="eval-apply cycle">
+</div>
+<div class="title">Figure 1. eval-apply cycle</div>
+</div>
+<div class="paragraph">
+<p>Note that it is important to exploit data abstraction to define the elements on which the evaluation procedures work in order to separate the syntax of the language from its semantics. This is useful as it allows to change the syntax of the language without having to change the evaluator, i.e. the semantics. So for example to implement the syntactic change to function calls it is necessary to just change the procedures dealing with the syntax, i.e. those walking the tree structure and pulling out the pieces.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_metacircular_evaluator">Metacircular Evaluator</h3>
+<div class="paragraph">
+<p>We have talked so far how it is possible to create languages within Scheme by defining an evaluator which defines some procedures to implement the <em>eval-apply</em> cycle. For example, it is possible to define a language for processing arithmetic expressions which resembles Scheme. However, this is not all. In fact, it is actually possible to write the actual Scheme evaluator with Scheme itself! This is what has been named by the authors of the book as <code>metacircular evaluator</code>, since writing the interpreter in a language is equivalent to defining the language itself.</p>
+</div>
+<div class="paragraph">
+<p>To build a complete evaluator of Scheme, it is necessary to define the procedures to implement the following elements of the language:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>semantics - the core evaluator composed of the eval-apply procedures</p>
+</li>
+<li>
+<p>syntax - procedures detailling how to write legal expressions in the language</p>
+</li>
+<li>
+<p>environment manipulation - procedures that implement the Environment Model defined in the previous post</p>
+</li>
+<li>
+<p>primitive procedures and initial global environment</p>
+</li>
+<li>
+<p>read-eval-print loop (REPL) to interact with the evaluator</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I close this post by including this funny clip taken from the lecture given by Prof. Gerald Sussman.</p>
 </div>
 <div class="videoblock">
 <div class="content">
 <iframe width="660" height="402" src="https://www.youtube.com/embed/Ow9AtuIuMLw?rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
 </div>
-<div id="footnotes">
-<hr>
-<div class="footnote" id="_footnote_1">
-<a href="#_footnoteref_1">1</a>. <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html" class="bare">https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-10.html</a>
+</div>
 </div>
 </div>
 </div>
