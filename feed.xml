@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><atom:link href="https://robywan27.github.io" rel="self" type="application/rss+xml"/><title>roby-wan $ ramblings</title><link>https://robywan27.github.io</link><description>Personal blogging site about topics in the landscape of programming languages, software development, computer science</description><lastBuildDate>Sun, 24 Nov 2019 17:56:40 +0100</lastBuildDate><generator>clj-rss</generator><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-20-best-programming-language-to-start-off/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-20-best-programming-language-to-start-off/</link><title>Best programming language to start off?</title><description>&lt;div class="paragraph"&gt;
-&lt;p&gt;I start off by saying it depends to make things clear. It depends on the prospective you have about what you are going to us programming for. Some factors to consider are for example:&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><atom:link href="https://robywan27.github.io" rel="self" type="application/rss+xml"/><title>roby-wan $ ramblings</title><link>https://robywan27.github.io</link><description>Personal blogging site about topics in the landscape of programming languages, software development, computer science</description><lastBuildDate>Mon, 06 Jan 2020 13:45:44 +0100</lastBuildDate><generator>clj-rss</generator><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-20-best-programming-language-to-start-off/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-20-best-programming-language-to-start-off/</link><title>Best programming language to start off?</title><description>&lt;div class="paragraph"&gt;
+&lt;p&gt;I start off by saying it depends to make things clear. It depends on the prospect you have about what you are going to use programming for. Some factors to consider are for example:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="ulist"&gt;
 &lt;ul&gt;
@@ -15,13 +15,13 @@
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;Based on the aforementioned points I would propose the followign suggestions.&lt;/p&gt;
+&lt;p&gt;Based on the aforementioned points I would propose the following suggestions.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="sect1"&gt;
 &lt;h2 id="_python"&gt;Python&lt;/h2&gt;
 &lt;div class="sectionbody"&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;This is going to apply for perhaps the majority of the people willing to learn to program. The reason for this is that many of these people are likely to not start a career as software developers, while they will need to program for other applications. Nowadays anyone doing anything related to science or statistics is going to need to use scientific langauges such as Matlab, R or Python. Another reason why Python is a good choice for beginners is the simple, concise and terse syntax coupled with it being high-level which allow the developer to forego details which afflict other languages (e.g. low-level operations for C-like languages or OO syntax for Java-like languages). You can write Python code straight away in just few lines of code without any unnecessary boilerplate. The language is powerful enough though, and allows you to exploit additional paradigms and approaches to make the code more complex.&lt;/p&gt;
+&lt;p&gt;This is going to apply for perhaps the majority of the people willing to learn to program. The reason for this is that many of these people are likely to not start a career as software developers, while they will need to program for other applications. Nowadays anyone doing anything related to science or statistics is going to need to use scientific langauges such as Matlab, R or Python. Another reason why Python is a good choice for beginners is the simple, concise and terse syntax coupled with it being high-level which allows the developer to forego details which afflict other languages (e.g. low-level operations for C-like languages or OO syntax for Java-like languages). You can write Python code straight away in just few lines of code without any unnecessary boilerplate. The language is powerful enough though, and allows you to exploit additional paradigms and approaches to make the code more complex.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -29,7 +29,7 @@
 &lt;h2 id="_javascript"&gt;Javascript&lt;/h2&gt;
 &lt;div class="sectionbody"&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;This is also going to be one of the most popular choices, in particular for those people willing to make a career out of writing software. Most software development jobs are web and Javascript is king in the web. In the last decade it has risen in prominence like no other language. What makes this language suited to new developers is also the fact that it is still mainly used for front-end development, which is usually less geeky and techy than other kinds of development roles. This results in a more vibrant and heterogenous community, which I think is a strong point in favor. As the language per se, however, I don&amp;#8217;t consider it to be the optimal choice, since the plain lanaguage is far from being straightforward and consistent. Many of its quirks confuse even the most seasoned Javascript developers. And it requires a thorough understanding of many of its mechanisms to properly master the language; I think it is one of the most deceiving langauges in that it seems to be simpler than it actually is (for a further understanding of the language I advise Kyle Simpson&amp;#8217;s books &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote."&gt;1&lt;/a&gt;]&lt;/sup&gt;). Moreover, nowadays the ecosystem which revolts around it is daunting, and it is likely you will immediately be faced with several other technologies when working with Javascript.&lt;/p&gt;
+&lt;p&gt;This is also going to be one of the most popular choices, in particular for those people willing to make a career out of writing software. Most software development jobs are web and Javascript is king in the web. In the last decade it has risen in prominence like no other language. What makes this language suited to new developers is also the fact that it is still mainly used for front-end development, which is usually less geeky and techy than other kinds of development roles. This results in a more vibrant and heterogenous community, which I think is a strong point in favor. As the language per se, however, I don&amp;#8217;t consider it to be the optimal choice, since the plain lanaguage is far from being straightforward and consistent. Many of its quirks confuse even the most seasoned Javascript developers. And it requires a thorough understanding of many of its mechanisms to properly master the language; I think it is one of the most deceiving langauges in that it seems to be simpler than it actually is (for a further understanding of the language I advise Kyle Simpson&amp;#8217;s books &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote."&gt;1&lt;/a&gt;]&lt;/sup&gt;). Moreover, nowadays the ecosystem which revolves around it is daunting, and it is likely you will immediately be faced with several other technologies when working with Javascript.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -53,7 +53,7 @@
 &lt;h2 id="_haskell"&gt;Haskell ?&lt;/h2&gt;
 &lt;div class="sectionbody"&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;I am not sure about this choice, but Haskell could also be a valid alternative if you plan on learning the functional approach with a pure functional language. Also I find it very concise, which is good when you are starting out so that you don&amp;#8217;t get distracted by unnecessary syntactic details. The problem with it could be that it quickly escalates into category theory (monads and all its friends) as soon as you want to do something more useful such as reading/writing or dealing with uncertain operations, which may be fairly confusing, especially for the not so mathematically well-versed audience. It could be good though for mathematicians.&lt;/p&gt;
+&lt;p&gt;I am not sure about this choice, but Haskell could also be a valid alternative if you plan on learning the functional approach with a pure functional language. Also I find it very concise, which is good when you are starting out so that you don&amp;#8217;t get distracted by unnecessary syntactic details. The problem with it could be that it quickly escalates into category theory (monads and all its friends) as soon as you want to do something more useful such as reading/writing or dealing with uncertain operations, which may be fairly confusing, especially for the not so mathematically well-versed audience. It could be a good fit for mathematicians though.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -72,7 +72,7 @@
 &lt;div class="sect2"&gt;
 &lt;h3 id="_c_2"&gt;C++&lt;/h3&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;I woudl say C is by no means the best way to start learning programming, as it is notoriously over-complicated and is huge. C would definitely be a better choice since it is just a small subset of C. C++ could be the natural continuation after learning C if you plan to use it for your applications (e.g. embedded, video-games, gaphics).&lt;/p&gt;
+&lt;p&gt;I would say C is by no means the best way to start learning programming, as it is notoriously over-complicated and is huge. C would definitely be a better choice since it is just a small subset of C. C++ could be the natural continuation after learning C if you plan to use it for your applications (e.g. embedded, video-games, graphics).&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -589,7 +589,7 @@ A possible shape for the iterative factorial algorithm is the following one&lt;/
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-metacircular-evaluator/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-metacircular-evaluator/</link><title>SICP series - Metacircular Evaluator</title><description>&lt;div class="paragraph"&gt;
+&lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-interpretation/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-interpretation/</link><title>SICP series - Interpretation</title><description>&lt;div class="paragraph"&gt;
 &lt;p&gt;So far in this series we have seen that abstractions allow to hide details and create modules to model complex systems. Abstraction can be obtained by building procedures which capture patterns of computation and data structures made out of simpler components. Although they tackle complementary issues, the distinction between both kinds of abstraction are blurred and share a common structure. In the previous &lt;a href="https://robywan27.github.io/my-blog/posts/2019-11-14-sicp-series-mutation-and-environment-model/"&gt;post&lt;/a&gt; we have drawn a comparison between the functional approach and a state-based one characterized by side effects. We have then formulated the environment model as model of evaluation to take into account mutation. Building on this last concept, we are going to delve into the central topic of the book: &lt;code&gt;meta-linguistic abstractions&lt;/code&gt;. This topic deals both with the definition of a new language and with the process of evaluation of a program. This is the ultimate step in the process of abstraction, as it allows not only to combine and abstract over the primitive elements of a language, but to define new languages which introduce different primitives and consequently new ways of combination and abstraction tailor-suited to different kinds of problems.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="sect1"&gt;
@@ -1165,35 +1165,6 @@ Example: (define total (- 100 30))&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description><pubDate>Thu, 14 Nov 2019 00:00:00 +0100</pubDate></item><item><guid>https://robywan27.github.io/my-blog/posts/2019-11-13-fp-series-intro/</guid><link>https://robywan27.github.io/my-blog/posts/2019-11-13-fp-series-intro/</link><title>A brief overview of Haskell</title><description>&lt;div class="paragraph"&gt;
 &lt;p&gt;This post will provide a brief overview of the programming language Haskell. One reason why Haskell is an apt language to study the concepts of functional programming is that unlike most, it is a pure functional language. This means that Haskell code is free from side effects and imperative structures. As we will see briefly, the language puts at disposal a framework to deal with side effects, or else it would not be of practical use in the real world. This post will touch the topics covered in the book by Hutton &lt;sup class="footnote" id="_footnote_hutton"&gt;[&lt;a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote."&gt;1&lt;/a&gt;]&lt;/sup&gt; and the edX MOOC &lt;sup class="footnote"&gt;[&lt;a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote."&gt;2&lt;/a&gt;]&lt;/sup&gt;.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="ulist"&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;table of contents FP concepts series (prog lang part A and maybe B, edx fp)&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;generic
-functions without any side effect
-recursion
-list comprehensions
-closures
-higher-order functions
-lazy eval, stream&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;statically typed
-pattern matching
-monads
-	parsing
-	IO
-types
-	basic types, list/tuple/function types, overloaded types, polymorphic types, currying, type declarations, data types, type classes&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;dynamically typed
-macros&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;/div&gt;
 &lt;div id="footnotes"&gt;
 &lt;hr&gt;
